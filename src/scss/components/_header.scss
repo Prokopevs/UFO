@@ -1,13 +1,21 @@
 .header {
     width: 100%;
     height: $header-height;
-    background-color: #444;
+
+    background-color: $header;
+    box-shadow: 0 5px 22px rgba($black, .25);
 
     position: fixed;
     top: 0;
     right: 0;
     z-index: $z-index-header;
     display: block;
+
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     &__inner {
         display: flex;
@@ -16,13 +24,38 @@
 
     &__logo {
         width: 4.6rem;
-        margin: 2px 0 0 21px;
+        margin: 0.1rem 0 0 2.1rem;
+        display: block;
     }
 
     &__name {
-        margin: 5px 0 0 17px;
+        margin: 0.25rem 2.5rem 0 1.7rem;
         font-size: 3.2rem;
-        padding-top: 0.5rem;
+        padding-top: 0;
         font-family: 'Bungee', cursive;
+    }
+}
+
+.nav__list {
+    display: flex;
+    align-items: center;
+}
+
+.nav__link {
+    display: block;
+    padding: 2rem 1.8rem 2.1rem 1.8rem;
+    border-radius: 0.3rem;
+
+    font-size: 1.2rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: $white;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+
+    transition: background-color .2s linear;
+
+    &:hover {
+        background-color: $cobalt;
     }
 }

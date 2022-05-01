@@ -1,13 +1,12 @@
 @import './variables/vars' ; 
 @import './vendor/reset';
 
-
 html {
     font-size: 62.5%;
 }
 
 body {
-    background-color: #181818;
+    background-color: $secondary;
 
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1.4rem;
