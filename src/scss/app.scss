@@ -1,4 +1,4 @@
-@import './variables/vars' ; 
+@import './variables/vars';
 @import './vendor/reset';
 
 html {
@@ -17,6 +17,10 @@ body {
 *:before,
 *:after {
     box-sizing: border-box;
+}
+
+a {
+    outline: none !important;
 }
 
 .page {
