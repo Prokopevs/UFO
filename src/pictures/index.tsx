@@ -14,4 +14,5 @@ const Galaxy = require('../assets/img/galaxy.png')
 const Post = require('../assets/img/post-1.jpg')
 const Post2 = require('../assets/img/post-2.jpg')
 
+
 export{ All, logoPopular, IconHistory, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk, Galaxy, Post, Post2 }

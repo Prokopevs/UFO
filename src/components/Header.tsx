@@ -33,7 +33,7 @@ function Header() {
                     </div>
 
                     <div className="toggleWrapper">
-                        <input type="checkbox"  className="dn" id="dn" />
+                        <input type="checkbox" className="dn" id="dn" />
                         <label htmlFor="dn" className="toggle">
                             <span className="toggle__handler">
                                 <span className="crater crater--1"></span>
