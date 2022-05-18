@@ -1,6 +1,6 @@
 import React from "react"
 
-function Recommend() {
+const Recommend = () => {
     return (
         <div className="recommend">
             <h3 className="recommend__subtitle">Интересно почитать</h3>

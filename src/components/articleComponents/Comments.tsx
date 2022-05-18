@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Comments() {
+const Comments = () => {
     return (
         <div>
             <h3 className="recommend__subtitle">Обсуждение</h3>

@@ -1,28 +1,29 @@
 import React from 'react'
 import Blocks from '../components/homeComponents/Blocks'
 import Pagination from '../components/homeComponents/Pagination'
-import axios from 'axios';
+import { useAppDispatch, useAppSelector } from '../hooks/redux';
+import { fetchPosts } from '../store/reducers/PostSlice';
 
 
-function Home() {
-    const [data, setData] = React.useState([])
-    const [changeLike, setChangeLike] = React.useState([false])
+const Home = () => {
+    const dispatch = useAppDispatch()
+    const {posts, isLoading} = useAppSelector(state => state.postReducer)
+    const {category} = useAppSelector(state => state.filterReducer)
 
     React.useEffect(() => {
-        axios.get(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/`).then(({ data }) => { setData(data) });
-    }, [])
+        dispatch(fetchPosts(category))
+    }, [category])
 
     return (
-        <div>
-            {data.map((obj, index) =><Blocks
-            key={index}
-            {...obj}
-            setChangeLike={setChangeLike}
-            changeLike={changeLike}
-            />)}
+        <>
+            {posts.map((obj, index) => (<Blocks
+                key={index}
+                isLoading={isLoading}
+                {...obj}
+            />))}
             
-            <Pagination/>
-        </div>
+            {!isLoading && <Pagination />}
+        </>
     )
 }
 

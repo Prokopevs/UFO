@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Galaxy } from '../pictures'
 
 
-function Header() {
+const Header = () => {
 
     return(
         <header className="header">

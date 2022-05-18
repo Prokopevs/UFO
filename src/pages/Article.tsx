@@ -4,7 +4,7 @@ import Comments from "../components/articleComponents/Comments"
 import Recommend from "../components/articleComponents/Recommend"
 import { Post } from '../pictures'
 
-function Article() {
+const Article = () => {
     return (
         <article className="post">
             <div className="post__actions">

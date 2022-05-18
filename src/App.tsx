@@ -1,13 +1,14 @@
 import React from "react"
 import Header from "./components/Header"
-import Sidebar from "./components/Sidebar"
+import Sidebar from "./components/sidebarComponents/Sidebar"
 import Article from "./pages/Article";
 import Home from "./pages/Home";
 
 import { Routes, Route } from 'react-router-dom';
+import { useAppSelector } from "./hooks/redux";
 
 
-function App() {
+const App = () => {
     return (
         <div className="page">
             <Header />
