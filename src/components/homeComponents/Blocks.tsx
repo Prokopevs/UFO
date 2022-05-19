@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import ScrollToTop from '../ScrollToTop'
 
 interface IBlocks {
     id: number
@@ -19,7 +20,7 @@ const Blocks: React.FC<IBlocks> = ({ id, imageUrl, name, description, date, cate
     const onClickLike = () => {
         setLike(!like)
     }
-
+    
     return (
         <article className={!isLoading ? "post" : "post post--opacity"}>
             <Link to="/article" className='post__link'>
@@ -42,6 +43,7 @@ const Blocks: React.FC<IBlocks> = ({ id, imageUrl, name, description, date, cate
                     </h2>
                     <p className="post__description">{description}</p>
                 </div>
+                <ScrollToTop />
             </Link>
 
             <div className="post__footer">
