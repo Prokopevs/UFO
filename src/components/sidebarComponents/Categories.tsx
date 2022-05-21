@@ -13,7 +13,7 @@ const Categories: React.FC<ICategories> = ({ items, all, onClickCategory, active
         <ul>
             <li className="category" onClick={() => onClickCategory(null)}>
                         <div className={activeCategory === null ? "category__inner category__inner--active" : "category__inner"}>
-                            <img className="category__icon" src={all} alt="sidebar icon"></img>
+                            <img className="category__icon" src={all} alt="sidebar icon" ></img>
                             <a className="category__text" href="#">Все</a>
                         </div>
             </li>
@@ -22,7 +22,7 @@ const Categories: React.FC<ICategories> = ({ items, all, onClickCategory, active
                 items.map((obj, index) => (
                     <li className="category" onClick={() => onClickCategory(index)} key={`${obj.name}_${index}`}>
                         <div className={activeCategory === index ? "category__inner category__inner--active" : "category__inner"}>
-                            <img className="category__icon" src={obj.icon} alt="sidebar icon"></img>
+                            <img className="category__icon" src={obj.icon} alt="sidebar icon" ></img>
                             <a className="category__text" href="#">{obj.name}</a>
                         </div>
                     </li>

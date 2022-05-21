@@ -1,29 +1,26 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import ScrollToTop from '../ScrollToTop'
+import { useAppDispatch } from '../../hooks/redux'
+import { IPosts } from '../../models/IPosts'
+import { fetchArticle } from '../../store/reducers/ArticleSlice'
 
-interface IBlocks {
-    id: number
-    imageUrl: string
-    name: string
-    description: string
-    date: string
-    categoryName: string
-    likeCount: number
-    liked: boolean
-    isLoading: boolean
-}
 
-const Blocks: React.FC<IBlocks> = ({ id, imageUrl, name, description, date, categoryName, likeCount, liked, isLoading }) => {
+const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, likeCount, liked, isLoading }) => {
+
+    const dispatch = useAppDispatch()
     const [like, setLike] = React.useState(liked)
 
     const onClickLike = () => {
         setLike(!like)
     }
+
+    const onClickArticle = (id: number) => {
+        dispatch(fetchArticle(id))
+    }
     
     return (
         <article className={!isLoading ? "post" : "post post--opacity"}>
-            <Link to="/article" className='post__link'>
+            <Link to="/article" className='post__link' onClick={() => onClickArticle(id)}>
                 <div className="post__header">
                     <a href="#">
                         <img className="post__preview" src={imageUrl} alt=""></img>

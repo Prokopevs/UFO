@@ -12,7 +12,6 @@ const Home = () => {
 
     React.useEffect(() => {
         dispatch(fetchPosts(category))
-        document.title = "LANIAKEA"
     }, [category])
 
     return (

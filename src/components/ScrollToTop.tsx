@@ -8,7 +8,6 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log('ВЫзвался')
   }, [pathname, category]);
 
   return null;
