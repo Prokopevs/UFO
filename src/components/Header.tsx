@@ -4,7 +4,10 @@ import { Galaxy } from '../pictures'
 
 
 const Header = () => {
-
+    React.useEffect(() => {
+        document.title = "LANIAKEA"
+    }, [])
+    
     return(
         <header className="header">
                 <div className="header__wrapper">

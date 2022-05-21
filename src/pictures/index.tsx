@@ -1,6 +1,6 @@
 const All = require('../assets/img/all.png')
 const logoPopular = require('../assets/img/popular.png')
-const IconHistory = require('../assets/img/history.png')
+const IconGalaxy = require('../assets/img/galaxy3.png')
 const Ufo = require('../assets/img/ufo.png')
 const Space = require('../assets/img/space.png')
 const Planets = require('../assets/img/planets.png')
@@ -15,4 +15,4 @@ const Post = require('../assets/img/post-1.jpg')
 const Post2 = require('../assets/img/post-2.jpg')
 
 
-export{ All, logoPopular, IconHistory, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk, Galaxy, Post, Post2}
+export{ All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk, Galaxy, Post, Post2}

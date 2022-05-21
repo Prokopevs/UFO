@@ -1,14 +1,15 @@
 import React from "react"
 import Categories from "./Categories"
-import { All, logoPopular, IconHistory, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk } from '../../pictures'
+import { All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk } from '../../pictures'
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { filterSlice } from "../../store/reducers/FilterSlice";
+import { Link } from "react-router-dom";
 
 
 
 const categoryNames = [
     { name: 'Популярное', icon: logoPopular },
-    { name: 'Истории', icon: IconHistory },
+    { name: 'Галактики', icon: IconGalaxy },
     { name: 'НЛО', icon: Ufo },
     { name: 'Космос', icon: Space },
     { name: 'Планеты', icon: Planets },
@@ -28,13 +29,14 @@ const Sidebar = () => {
 
     return (
         <aside className="sidebar">
-
-            <Categories 
-            items={categoryNames}
-            all={All}
-            onClickCategory={onSelectCategory}
-            activeCategory={category}
-            />
+            <Link to="/" className='post__link'>
+                <Categories 
+                items={categoryNames}
+                all={All}
+                onClickCategory={onSelectCategory}
+                activeCategory={category}
+                />
+            </Link>
 
             <div className="social__share">Поделиться</div>
             <ul className="social">

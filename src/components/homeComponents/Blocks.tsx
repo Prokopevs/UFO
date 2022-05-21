@@ -43,7 +43,6 @@ const Blocks: React.FC<IBlocks> = ({ id, imageUrl, name, description, date, cate
                     </h2>
                     <p className="post__description">{description}</p>
                 </div>
-                <ScrollToTop />
             </Link>
 
             <div className="post__footer">
@@ -62,6 +61,7 @@ const Blocks: React.FC<IBlocks> = ({ id, imageUrl, name, description, date, cate
                 </div>
             </div>
         </article>
+        
     )
 }
 
