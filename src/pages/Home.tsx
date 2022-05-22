@@ -7,11 +7,11 @@ import { fetchPosts } from '../store/reducers/PostSlice';
 
 const Home = () => {
     const dispatch = useAppDispatch()
-    const {posts, isLoading} = useAppSelector(state => state.postReducer)
+    const {posts, isLoading, currentPage} = useAppSelector(state => state.postReducer)
     const {category} = useAppSelector(state => state.filterReducer)
 
     React.useEffect(() => {
-        dispatch(fetchPosts(category))
+        dispatch(fetchPosts(category, currentPage))
     }, [category])
 
     return (
@@ -22,7 +22,7 @@ const Home = () => {
                 {...obj}
             />))}
             
-            {!isLoading && <Pagination />}
+            <Pagination category={category} />
         </>
     )
 }

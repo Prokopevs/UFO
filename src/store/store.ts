@@ -13,14 +13,14 @@ const persistConfig = {
     key: 'root',
     storage: storage,
     stateReconciler: autoMergeLevel1,
-    blacklist: ['postReducer']
+    blacklist: ['totalCount']
 };
 
 const reducers = combineReducers({
     postReducer,
     filterReducer,
     articleReducer
-  });
+});
 
 const _persistedReducer = persistCombineReducers(
     persistConfig,
@@ -29,7 +29,7 @@ const _persistedReducer = persistCombineReducers(
         filterReducer,
         articleReducer
     }
-  );
+);
 
 export const store = configureStore({
     reducer: _persistedReducer,

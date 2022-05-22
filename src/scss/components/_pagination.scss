@@ -6,6 +6,16 @@
     padding-top: 2rem;
 
     margin-top: auto;
+
+    -ms-user-select: none; 
+	-moz-user-select: none; 
+	-webkit-user-select: none; 
+	user-select: none; 
+}
+
+.pagination__inner {
+    display: flex;
+    flex-direction: column;
 }
 
 .pagination__item {
@@ -26,11 +36,20 @@
     color: $white;
     text-align: center;
     text-decoration: none;
+    border: 0;
 
     transition: background-color .2s linear;
 
     &:hover {
         background-color: lighten($header, 2%);
+    }
+
+    &--button {
+        cursor: not-allowed;
+
+        &:hover {
+            background-color: $header;
+        }
     }
 
     &--active {

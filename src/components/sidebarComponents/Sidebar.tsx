@@ -4,6 +4,7 @@ import { All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitte
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { filterSlice } from "../../store/reducers/FilterSlice";
 import { Link } from "react-router-dom";
+import { postSlice } from "../../store/reducers/PostSlice";
 
 
 
@@ -22,8 +23,10 @@ const Sidebar = () => {
     const dispatch = useAppDispatch()
     const {setCategory} = filterSlice.actions
     const {category} = useAppSelector(state => state.filterReducer)
+    const {setCurrentPage} = postSlice.actions
  
     const onSelectCategory = (index: number) => {
+        dispatch(setCurrentPage(1))
         dispatch(setCategory(index))
     }
 

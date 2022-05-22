@@ -7,12 +7,18 @@ interface PostState {
     posts: IPosts[]
     isLoading: boolean
     error: string
+    limit: number
+    totalCount: number
+    currentPage: number
 }
 
 const initialState: PostState = {
     posts: [],
     isLoading: false,
-    error: ''
+    error: '',
+    limit: 3,
+    totalCount: 15,
+    currentPage: 1,
 }
 
 export const postSlice = createSlice({
@@ -31,13 +37,16 @@ export const postSlice = createSlice({
             state.isLoading = false
             state.error = action.payload
         },
+        setCurrentPage(state, action: PayloadAction<number>) {
+            state.currentPage = action.payload
+        }
     }
 })
 
-export const fetchPosts = (category) => async (dispatch: AppDispatch) => {
+export const fetchPosts = (category, pageNumber=1, limit=3 ) => async (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postsFetching())
-        const response = await axios.get<IPosts[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${category !== null ? `category=${category}` : ''}`)
+        const response = await axios.get<any>(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${category !== null ? `category=${category}` : ''}&page=${pageNumber}&limit=${limit}`)
         dispatch(postSlice.actions.postsFetchingSuccess(response.data))
     } catch (e) {
         dispatch(postSlice.actions.postsFetchingError(e.message))
