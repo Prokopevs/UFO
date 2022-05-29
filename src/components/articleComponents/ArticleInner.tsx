@@ -6,7 +6,7 @@ import { Post } from '../../pictures'
 import { IArticles } from '../../models/IArticles'
 
 
-const ArticleInner: React.FC<IArticles> = ({ id, imageUrl, name, date, categoryName, description, text, interesting, isLoading }) => {
+const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName, description, text, interesting, isLoading }) => {
     return (
         <article className="post">
             <div className="post__actions">
@@ -40,17 +40,20 @@ const ArticleInner: React.FC<IArticles> = ({ id, imageUrl, name, date, categoryN
                 </div>
             </div>
 
-            {/* {interesting.map((obj, index) => (<ArticleInner
-                key={index}
-                isLoading={isLoading}
-                {...obj}
-            />))} */}
+            <div className="recommend">
+                <h3 className="recommend__subtitle">Интересно почитать</h3>
+                <ul className="recommend__list">
+                    {interesting.map((items, index) => (<Recommend
+                        key={index}
+                        {...items}
+                    />))}
+                </ul>
+            </div>
 
-            <Recommend />
-
+            
             <Comments />
 
-        </article>
+        </article >
     )
 }
 

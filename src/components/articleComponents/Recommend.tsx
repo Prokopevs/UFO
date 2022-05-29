@@ -1,37 +1,23 @@
 import React from "react"
+import { useAppDispatch } from "../../hooks/redux"
+import { IInteresting } from "../../models/IArticles"
+import { fetchArticle } from "../../store/reducers/ArticleSlice"
 
-const Recommend = () => {
+const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
+
+    const dispatch = useAppDispatch()
+
+    const onClickArticle = (id: number) => {
+        dispatch(fetchArticle(id))
+    }
+
     return (
-        <div className="recommend">
-            <h3 className="recommend__subtitle">Интересно почитать</h3>
-
-            <ul className="recommend__list">
-                <li className="recommend__list-item">
-                    <h4 className="recommend__list-title">
-                        <a href="#">Как я сходил на FrontEnd Conf 2021 Как я сходил на FrontEnd Conf 2021</a>
-                    </h4>
-                    <time className="recommend__list-date" dateTime="2020-06-21 19:21">21.06.2020</time>
-                </li>
-                <li className="recommend__list-item">
-                    <h4 className="recommend__list-title">
-                        <a href="#">Как я сходил на FrontEnd Conf 2021 Как я сходил на FrontEnd Conf 2021</a>
-                    </h4>
-                    <time className="recommend__list-date" dateTime="2020-06-21 19:21">21.06.2020</time>
-                </li>
-                <li className="recommend__list-item">
-                    <h4 className="recommend__list-title">
-                        <a href="#">Как я сходил на FrontEnd Conf 2021</a>
-                    </h4>
-                    <time className="recommend__list-date" dateTime="2020-06-21 19:21">21.06.2020</time>
-                </li>
-                <li className="recommend__list-item">
-                    <h4 className="recommend__list-title">
-                        <a href="#">Как я сходил на FrontEnd Conf 2021</a>
-                    </h4>
-                    <time className="recommend__list-date" dateTime="2020-06-21 19:21">21.06.2020</time>
-                </li>
-            </ul>
-        </div>
+        <li className="recommend__list-item">
+            <h4 className="recommend__list-title">
+                <a href="#" onClick={() => onClickArticle(id)}>{name}</a>
+            </h4>
+            <time className="recommend__list-date" dateTime="2022-05-21 19:21">{date}</time>
+        </li>
     )
 }
 

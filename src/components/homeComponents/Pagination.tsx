@@ -8,7 +8,7 @@ interface IPagination {
 
 const Pagination: React.FC<IPagination> = ({ category }) => {
     const dispatch = useAppDispatch()
-    const {totalCount, limit, currentPage} = useAppSelector(state => state.postReducer) // totalCount нужно сделать изменения в redux. И при получении data сразу сетать их в state
+    const {totalCount, limit, currentPage} = useAppSelector(state => state.postReducer) // totalCount нужно сделать изменения в redux. И при получении response.totalCount при помощи AC изменять totalCount
     
     const {setCurrentPage} = postSlice.actions
 

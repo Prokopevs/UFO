@@ -15,11 +15,11 @@ const Comments = () => {
             <ul className="comments">
                 <li className="comments__item">
                     <div className="comments__header">
-                        <img className="comments__avatar" src="https://placehold.it/30" alt=""></img>
+                        <img className="comments__avatar" src="" alt=""></img>
 
                         <div className="comments__author">
-                            <div className="comments__name">Дмитрий Валак</div>
-                            <time className="comments__pubdate" dateTime="2020-12-21 19:21">2020-12-21</time>
+                            <div className="comments__name">Аноним</div>
+                            <time className="comments__pubdate" dateTime="2022-05-21 19:21">2022-05-21</time>
                         </div>
                     </div>
 
@@ -28,11 +28,11 @@ const Comments = () => {
 
                 <li className="comments__item">
                     <div className="comments__header">
-                        <img className="comments__avatar" src="https://placehold.it/30" alt=""></img>
+                        <img className="comments__avatar" src="" alt=""></img>
 
                         <div className="comments__author">
-                            <div className="comments__name">Дмитрий Валак</div>
-                            <time className="comments__pubdate" dateTime="2020-12-21 19:21">2020-12-21</time>
+                            <div className="comments__name">Аноним</div>
+                            <time className="comments__pubdate" dateTime="2022-05-21 19:21">2022-05-21</time>
                         </div>
                     </div>
 
