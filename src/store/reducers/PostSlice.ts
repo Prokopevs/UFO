@@ -10,6 +10,7 @@ interface PostState {
     limit: number
     totalCount: number
     currentPage: number
+    portionNumber: number
 }
 
 const initialState: PostState = {
@@ -19,6 +20,7 @@ const initialState: PostState = {
     limit: 3,
     totalCount: 15,
     currentPage: 1,
+    portionNumber: 1,
 }
 
 export const postSlice = createSlice({
@@ -35,15 +37,19 @@ export const postSlice = createSlice({
         },
         postsFetchingError(state, action: PayloadAction<string>) {
             state.isLoading = false
-            state.error = action.payload
+            state.error = action.payload 
         },
         setCurrentPage(state, action: PayloadAction<number>) {
             state.currentPage = action.payload
-        }
+        },
+        setPortionNumber(state, action: PayloadAction<number>) {
+            state.portionNumber = action.payload
+        },
+        
     }
 })
 
-export const fetchPosts = (category, pageNumber=1, limit=3 ) => async (dispatch: AppDispatch) => {
+export const fetchPosts = (category, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postsFetching())
         const response = await axios.get<any>(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${category !== null ? `category=${category}` : ''}&page=${pageNumber}&limit=${limit}`)

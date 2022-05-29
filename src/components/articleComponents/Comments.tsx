@@ -1,4 +1,5 @@
 import React from 'react'
+import { Person } from '../../pictures'
 
 const Comments = () => {
     return (
@@ -15,7 +16,7 @@ const Comments = () => {
             <ul className="comments">
                 <li className="comments__item">
                     <div className="comments__header">
-                        <img className="comments__avatar" src="" alt=""></img>
+                        <img className="comments__avatar" src={String(Person)} alt=""></img>
 
                         <div className="comments__author">
                             <div className="comments__name">Аноним</div>
@@ -28,7 +29,7 @@ const Comments = () => {
 
                 <li className="comments__item">
                     <div className="comments__header">
-                        <img className="comments__avatar" src="" alt=""></img>
+                        <img className="comments__avatar" src={String(Person)} alt=""></img>
 
                         <div className="comments__author">
                             <div className="comments__name">Аноним</div>

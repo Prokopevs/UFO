@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/redux'
 import { IPosts } from '../../models/IPosts'
 import { fetchArticle } from '../../store/reducers/ArticleSlice'
+import Spinner from '../Spinner'
 
 
 const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, likeCount, liked, isLoading }) => {
@@ -24,13 +25,7 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
                 <div className="post__header">
                     <a href="#">
                         <img className="post__preview" src={imageUrl} alt=""></img>
-                        {isLoading && <div className="spinner">
-                            <div className="blob top"></div>
-                            <div className="blob bottom"></div>
-                            <div className="blob left"></div>
-
-                            <div className="blob move-blob"></div>
-                        </div>}
+                        {isLoading && <Spinner/>}
                     </a>
                 </div>
 

@@ -7889,6 +7889,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-delay-link@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/react-delay-link/-/react-delay-link-1.1.6.tgz#ee840443a70dc31dbf8f6a9cc175507c7b380ed4"
+  integrity sha512-tMqJtSeSW6FgImsa1fteJCer2MHDEQP+r5egDH0kNMYScy5EYpYtnW8gZ867hniVeYdEfWKCt7hnYsJG4NUL/Q==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"

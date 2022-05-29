@@ -8,13 +8,16 @@ interface IPagination {
 
 const Pagination: React.FC<IPagination> = ({ category }) => {
     const dispatch = useAppDispatch()
-    const {totalCount, limit, currentPage} = useAppSelector(state => state.postReducer) // totalCount нужно сделать изменения в redux. И при получении response.totalCount при помощи AC изменять totalCount
-    
-    const {setCurrentPage} = postSlice.actions
+    const {totalCount, limit, currentPage, portionNumber} = useAppSelector(state => state.postReducer) // totalCount нужно сделать изменения в redux. И при получении response.totalCount при помощи AC изменять totalCount
+    const {setCurrentPage, setPortionNumber} = postSlice.actions
+
 
     const onPageChanged = (pageNumber: number) => {
         dispatch(setCurrentPage(pageNumber))
         dispatch(fetchPosts(category, pageNumber, limit))
+    }
+    const onPortionChanged = (portionNumber: number) => {
+        dispatch(setPortionNumber(portionNumber))
     }
 
     const pagesCount = Math.ceil(totalCount / limit); // all posts divide limit
@@ -26,8 +29,6 @@ const Pagination: React.FC<IPagination> = ({ category }) => {
     const portionSize = 3
 
     let portionCount = Math.ceil(pagesCount / portionSize);
-    let [portionNumber, setPortionNumber] = React.useState(1); // вынести в redux проблема когда переходишь на 4, 5 и затем выбираешь новую категорию он там и остается. Потом при переходе на новую категорию просто стбрасывать portionNumber на 1
-
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     let rightPortionPageNumber = portionNumber * portionSize;
 
@@ -35,7 +36,7 @@ const Pagination: React.FC<IPagination> = ({ category }) => {
             <ul className="pagination">
                 <li className="pagination__item">
                     <a className={portionNumber > 1 ? "pagination__link" : "pagination__link pagination__link--button"}
-                    onClick={portionNumber > 1 ? () => {setPortionNumber(portionNumber - 1)} : () => {}} >&lt;</a>
+                    onClick={portionNumber > 1 ? () => {onPortionChanged(portionNumber - 1)} : () => {}} >&lt;</a>
                 </li>
 
                 {pages
@@ -49,7 +50,7 @@ const Pagination: React.FC<IPagination> = ({ category }) => {
                 
                 <li className="pagination__item">
                     <a className={portionCount > portionNumber ? "pagination__link" : "pagination__link pagination__link--button"}
-                    onClick={portionCount > portionNumber ? () => {setPortionNumber(portionNumber + 1)} : () => {}}>&gt;</a>
+                    onClick={portionCount > portionNumber ? () => {onPortionChanged(portionNumber + 1)} : () => {}}>&gt;</a>
                 </li>
             </ul>
      

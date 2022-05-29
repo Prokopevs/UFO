@@ -11,8 +11,7 @@ const IconVk = require('../assets/img/vk.png')
 
 const Galaxy = require('../assets/img/galaxy.png')
 
-const Post = require('../assets/img/post-1.jpg')
-const Post2 = require('../assets/img/post-2.jpg')
+const Person = require('../assets/img/person.png')
 
 
-export{ All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk, Galaxy, Post, Post2}
+export{ All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk, Galaxy, Person}

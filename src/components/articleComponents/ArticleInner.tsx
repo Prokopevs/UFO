@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import Comments from './Comments'
 import Recommend from './Recommend'
-import { Post } from '../../pictures'
 import { IArticles } from '../../models/IArticles'
 
 
