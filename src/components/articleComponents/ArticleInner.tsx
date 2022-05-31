@@ -6,6 +6,7 @@ import { IArticles } from '../../models/IArticles'
 
 
 const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName, description, text, interesting, isLoading }) => {
+
     return (
         <article className="post">
             <div className="post__actions">
@@ -34,8 +35,9 @@ const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName,
 
                     <p>{description}</p>
 
-                    <p>{text}</p>
-
+                    {text.split(" | ").map((item) => (
+                        <p>{item}</p>
+                    ))}
                 </div>
             </div>
 
@@ -49,7 +51,7 @@ const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName,
                 </ul>
             </div>
 
-            
+
             <Comments />
 
         </article >

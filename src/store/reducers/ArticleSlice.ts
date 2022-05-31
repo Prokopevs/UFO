@@ -38,12 +38,11 @@ export const fetchArticle = (id) => async (dispatch: AppDispatch) => {
     try {
         dispatch(articleSlice.actions.articleFetching())
         const response = await axios.get<IArticles[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/articles/?${`id=${id}`}`)
-        const a = response.data.slice(0, 1) // убрать когда будет правильный backend
-        dispatch(articleSlice.actions.articleFetchingSuccess(a))
+        const firstItemInArr = response.data.slice(0, 1) // убрать когда будет правильный backend
+        dispatch(articleSlice.actions.articleFetchingSuccess(firstItemInArr))
     } catch (e) {
         dispatch(articleSlice.actions.articleFetchingError(e.message))
     }
 }
-
 
 export default articleSlice.reducer
