@@ -1,4 +1,4 @@
-# <center>Laniakea</center>
+# <center>LANIAKEA</center>
 
 <p align="center"> <img  src="src/assets/img/Laniakea.png"></p>
 
@@ -13,7 +13,7 @@
 ### About the project
 
 #### Stack:
-- ReactJs
+- ReactJS
 - TypeScript
 - SCSS
 - Redux
