@@ -17,6 +17,7 @@ const App = () => {
                 <div className="container">
                     <Routes>
                         <Route path="/" element={<Home />} />
+                        <Route path="/ufo" element={<Home />} /> {/* for GitHub Pages */}
                         <Route path="/article" element={<Article />} />
                     </Routes>
                 </div>
