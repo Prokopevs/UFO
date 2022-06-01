@@ -24,7 +24,6 @@ const Sidebar = () => {
     const {setCategory} = filterSlice.actions
     const {category} = useAppSelector(state => state.filterReducer)
     const {setCurrentPage} = postSlice.actions
-    // console.log(category)
  
     const onSelectCategory = (index: number) => {
         if (index===category) {      // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер

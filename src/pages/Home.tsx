@@ -17,7 +17,7 @@ const Home = () => {
     }, [category])
 
     return (
-        <div>
+        <>
             {posts.map((obj, index) => (<Blocks
                 key={index}
                 isLoading={isLoading}
@@ -25,7 +25,7 @@ const Home = () => {
             />))}
             
             <Pagination category={category} />
-        </div>
+        </>
     )
 }
 

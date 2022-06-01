@@ -38,7 +38,7 @@ export const fetchArticle = (id) => async (dispatch: AppDispatch) => {
     try {
         dispatch(articleSlice.actions.articleFetching())
         const response = await axios.get<IArticles[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/articles/?${`id=${id}`}`)
-        const firstItemInArr = response.data.slice(0, 1) // убрать когда будет правильный backend
+        const firstItemInArr = response.data.slice(0, 1)
         dispatch(articleSlice.actions.articleFetchingSuccess(firstItemInArr))
     } catch (e) {
         dispatch(articleSlice.actions.articleFetchingError(e.message))
