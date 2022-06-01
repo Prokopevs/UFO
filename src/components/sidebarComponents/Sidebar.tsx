@@ -35,7 +35,7 @@ const Sidebar = () => {
 
     return (
         <aside className="sidebar">
-            <Link to="/ufo" className='post__link'>
+            <Link to="/" className='post__link'>
                 <Categories 
                 items={categoryNames}
                 all={All}
