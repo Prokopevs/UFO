@@ -1,5 +1,4 @@
 import React from 'react'
-import { useAppSelector } from '../../hooks/redux'
 import  { ITopic }  from '../../models/ITopic'
 
 interface ICategories {

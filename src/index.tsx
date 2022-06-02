@@ -13,8 +13,6 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-// const store = setupStore()
-
 root.render(
     <React.StrictMode>
 
@@ -28,6 +26,6 @@ root.render(
         </BrowserRouter>
 
     </React.StrictMode>
-);
+)
 
 

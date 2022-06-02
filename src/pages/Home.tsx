@@ -1,9 +1,8 @@
 import React from 'react'
 import Blocks from '../components/homeComponents/Blocks'
 import Pagination from '../components/homeComponents/Pagination'
-import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { fetchPosts, postSlice } from '../store/reducers/PostSlice';
-
+import { useAppDispatch, useAppSelector } from '../hooks/redux'
+import { fetchPosts, postSlice } from '../store/reducers/PostSlice'
 
 const Home = () => {
     const dispatch = useAppDispatch()

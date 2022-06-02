@@ -4,7 +4,6 @@ import Comments from './Comments'
 import Recommend from './Recommend'
 import { IArticles } from '../../models/IArticles'
 
-
 const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName, description, text, interesting, isLoading }) => {
 
     return (
@@ -50,7 +49,6 @@ const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName,
                     />))}
                 </ul>
             </div>
-
 
             <Comments />
 

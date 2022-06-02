@@ -1,9 +1,9 @@
 import React from "react"
-import { Link } from "react-router-dom";
-import { useAppDispatch } from "../hooks/redux";
+import { Link } from "react-router-dom"
+import { useAppDispatch } from "../hooks/redux"
 import { Galaxy } from '../pictures'
-import { filterSlice } from "../store/reducers/FilterSlice";
-import { postSlice } from "../store/reducers/PostSlice";
+import { filterSlice } from "../store/reducers/FilterSlice"
+import { postSlice } from "../store/reducers/PostSlice"
 
 
 const Header = () => {
@@ -71,4 +71,4 @@ const Header = () => {
     )
 }
 
-export default Header;
+export default Header

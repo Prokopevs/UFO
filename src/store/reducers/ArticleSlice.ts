@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IArticles } from './../../models/IArticles';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { IArticles } from './../../models/IArticles'
 import { AppDispatch } from "../store"
 import axios from 'axios';
 

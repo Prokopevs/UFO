@@ -1,7 +1,6 @@
 import React from "react"
 import ArticleInner from "../components/articleComponents/ArticleInner"
 import ArticleSkeleton from "../components/ArticleSkeleton"
-import Spinner from "../components/Spinner"
 import { useAppSelector } from "../hooks/redux"
 
 const Article = () => {

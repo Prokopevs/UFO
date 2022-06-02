@@ -8,9 +8,8 @@ interface IPagination {
 
 const Pagination: React.FC<IPagination> = ({ category }) => {
     const dispatch = useAppDispatch()
-    const {totalCount, limit, currentPage, portionNumber} = useAppSelector(state => state.postReducer) // totalCount нужно сделать изменения в redux. И при получении response.totalCount при помощи AC изменять totalCount
+    const {totalCount, limit, currentPage, portionNumber} = useAppSelector(state => state.postReducer)
     const {setCurrentPage, setPortionNumber} = postSlice.actions
-
 
     const onPageChanged = (pageNumber: number) => {
         dispatch(setCurrentPage(pageNumber))
@@ -28,9 +27,9 @@ const Pagination: React.FC<IPagination> = ({ category }) => {
 
     const portionSize = 3
 
-    let portionCount = Math.ceil(pagesCount / portionSize);
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
-    let rightPortionPageNumber = portionNumber * portionSize;
+    let portionCount = Math.ceil(pagesCount / portionSize)
+    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
+    let rightPortionPageNumber = portionNumber * portionSize
 
     return (
             <ul className="pagination">
@@ -53,7 +52,6 @@ const Pagination: React.FC<IPagination> = ({ category }) => {
                     onClick={portionCount > portionNumber ? () => {onPortionChanged(portionNumber + 1)} : () => {}}>&gt;</a>
                 </li>
             </ul>
-     
     )
 }
 

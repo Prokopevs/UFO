@@ -5,7 +5,6 @@ import { IPosts } from '../../models/IPosts'
 import { fetchArticle } from '../../store/reducers/ArticleSlice'
 import Spinner from '../Spinner'
 
-
 const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, likeCount, liked, isLoading }) => {
 
     const dispatch = useAppDispatch()

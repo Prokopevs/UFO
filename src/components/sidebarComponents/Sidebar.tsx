@@ -2,11 +2,9 @@ import React from "react"
 import Categories from "./Categories"
 import { All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk } from '../../pictures'
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
-import { filterSlice } from "../../store/reducers/FilterSlice";
-import { Link } from "react-router-dom";
-import { fetchPosts, postSlice } from "../../store/reducers/PostSlice";
-
-
+import { filterSlice } from "../../store/reducers/FilterSlice"
+import { Link } from "react-router-dom"
+import { fetchPosts, postSlice } from "../../store/reducers/PostSlice"
 
 const categoryNames = [
     { name: 'Популярное', icon: logoPopular },
@@ -16,8 +14,6 @@ const categoryNames = [
     { name: 'Планеты', icon: Planets },
     { name: 'Миссии', icon: Missions }
 ];
-
-
 
 const Sidebar = () => {
     const dispatch = useAppDispatch()
