@@ -22,10 +22,8 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
         <article className={!isLoading ? "post" : "post post--opacity"}>
             <Link to="/article" className='post__link' onClick={() => onClickArticle(id)}>
                 <div className="post__header">
-                    <a href="#">
-                        <img className="post__preview" src={imageUrl} alt=""></img>
-                        {isLoading && <Spinner/>}
-                    </a>
+                    <img className="post__preview" src={imageUrl} alt=""></img>
+                    {isLoading && <Spinner/>}
                 </div>
 
                 <div className="post__content">

@@ -10,7 +10,7 @@ const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName,
         <article className="post">
             <div className="post__actions">
                 <Link to="/">
-                    <a href="#">вернуться назад</a>
+                    <p>вернуться назад</p>
                 </Link>
             </div>
 
@@ -34,8 +34,8 @@ const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName,
 
                     <p>{description}</p>
 
-                    {text.split(" | ").map((item) => (
-                        <p>{item}</p>
+                    {text.split(" | ").map((item, index) => (
+                        <p key={index}>{item}</p>
                     ))}
                 </div>
             </div>

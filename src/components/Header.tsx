@@ -33,17 +33,17 @@ const Header = () => {
                             <ul className="nav__list">
                                 <li className="nav__item">
                                 <Link to="/" className='post__link'>
-                                    <a className="nav__link" href="#" onClick={() => onClickCategory()}>Главная</a>
+                                    <div className="nav__link" onClick={() => onClickCategory()}>Главная</div>
                                 </Link>
                                 </li>
                                 <li className="nav__item">
-                                    <a className="nav__link" href="#">Обо мне</a>
+                                    <div className="nav__link">Обо мне</div>
                                 </li>
                                 <li className="nav__item">
-                                    <a className="nav__link" href="#">Отзывы</a>
+                                    <div className="nav__link">Отзывы</div>
                                 </li>
                                 <li className="nav__item">
-                                    <a className="nav__link" href="#">Реклама</a>
+                                    <div className="nav__link">Реклама</div>
                                 </li>
                             </ul>
                         </nav>

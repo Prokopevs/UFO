@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import storageSession from 'redux-persist/lib/storage/session'
 import postReducer from './reducers/PostSlice'
 import filterReducer from './reducers/FilterSlice'
 import articleReducer from './reducers/ArticleSlice'
@@ -7,9 +6,10 @@ import articleReducer from './reducers/ArticleSlice'
 import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'reduxjs-toolkit-persist'
 import { persistCombineReducers } from 'reduxjs-toolkit-persist'
 import storage from 'reduxjs-toolkit-persist/lib/storage'
+import storageSession from 'redux-persist/lib/storage/session'
 import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1'
 
-const persistConfig = {
+const rootPersistConfig = {
     key: 'root',
     storage: storageSession,
     stateReconciler: autoMergeLevel1,
@@ -23,7 +23,7 @@ const reducers = combineReducers({
 })
 
 const _persistedReducer = persistCombineReducers(
-    persistConfig,
+    rootPersistConfig,
     {
         postReducer,
         filterReducer,
