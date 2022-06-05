@@ -11,6 +11,7 @@ interface PostState {
     totalCount: number
     currentPage: number
     portionNumber: number
+    key: number
 }
 
 const initialState: PostState = {
@@ -21,6 +22,7 @@ const initialState: PostState = {
     totalCount: 15,
     currentPage: 1,
     portionNumber: 1,
+    key: 0,
 }
 
 export const postSlice = createSlice({
@@ -29,6 +31,7 @@ export const postSlice = createSlice({
     reducers: {
         postsFetching(state) {
             state.isLoading = true
+            state.key = state.key ^ 1
         },
         postsFetchingSuccess(state, action: PayloadAction<IPosts[]>) {
             state.isLoading = false
@@ -44,8 +47,7 @@ export const postSlice = createSlice({
         },
         setPortionNumber(state, action: PayloadAction<number>) {
             state.portionNumber = action.payload
-        },
-        
+        },  
     }
 })
 

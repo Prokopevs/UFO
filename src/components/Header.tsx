@@ -1,39 +1,43 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { useAppDispatch } from "../hooks/redux"
+import { useAppDispatch, useAppSelector } from "../hooks/redux"
 import { Galaxy } from '../pictures'
 import { filterSlice } from "../store/reducers/FilterSlice"
-import { postSlice } from "../store/reducers/PostSlice"
+import { fetchPosts, postSlice } from "../store/reducers/PostSlice"
+import Progress from "./ProgressBar/Progress"
 
 const Header = () => {
     const dispatch = useAppDispatch()
-    const {setCategory} = filterSlice.actions
-    const {setCurrentPage} = postSlice.actions
+    const { setCategory } = filterSlice.actions
+    const { setCurrentPage } = postSlice.actions
+    const { isLoading, key } = useAppSelector(state => state.postReducer)
+    const {category} = useAppSelector(state => state.filterReducer)
 
     React.useEffect(() => {
         document.title = "LANIAKEA"
     }, [])
 
     const onClickCategory = () => {
+        if (category===null) {      
+            dispatch(fetchPosts(null))
+        }
         dispatch(setCurrentPage(1)) // выбирая категорию пагинация начинается с 1
         dispatch(setCategory(null)) //выбираем категорию(все, популярное...)
     }
-    
-    return(
+
+    return (
         <header className="header">
             <div className="header__wrapper">
                 <div className="header__inner">
-                <Link to="/" className="header__link">
-                    <img className="header__logo" src={String(Galaxy)} alt="ufo logo"></img>
-                    <div className="header__name">LANIAKEA</div>
-                </Link>
-                
+                    <Link to="/" className="header__link" onClick={() => onClickCategory()}>
+                        <img className="header__logo" src={String(Galaxy)} alt="ufo logo"></img>
+                        <p className="header__name">LANIAKEA</p>
+                    </Link>
+
                     <nav className="nav">
                         <ul className="nav__list">
                             <li className="nav__item">
-                            <Link to="/" className='post__link'>
-                                <div className="nav__link" onClick={() => onClickCategory()}>Главная</div>
-                            </Link>
+                                <div className="nav__link" >Главная</div>
                             </li>
                             <li className="nav__item">
                                 <div className="nav__link">Обо мне</div>
@@ -65,6 +69,7 @@ const Header = () => {
                     </label>
                 </div>
             </div>
+            <Progress isAnimating={isLoading} animationDuration={300} incrementDuration={50} key={key}/>
         </header>
     )
 }
