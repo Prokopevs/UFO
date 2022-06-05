@@ -1025,6 +1025,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.18.3":
+  version "7.18.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.3.tgz#c7b654b57f6f63cf7f8b418ac9ca04408c4579f4"
+  integrity sha512-38Y8f7YUhce/K7RMwTp7m0uCumpv9hZkitCbBClqQIow1qSbCvGkcegKOXpEWCQLfWmevgRiWokZ1GkpfhbZug==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.16.7", "@babel/template@^7.3.3":
   version "7.16.7"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.16.7.tgz"
@@ -1663,6 +1670,14 @@
     "@svgr/plugin-jsx" "^5.5.0"
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
+
+"@tanem/react-nprogress@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@tanem/react-nprogress/-/react-nprogress-5.0.1.tgz#338249e907c805e51ab9e6c712ee59130f190f93"
+  integrity sha512-Q6nVFs4EP88L8b/oVS5MJgEfF7NaWfQ5sGuNXVvxtzPn6EmfCsunG5Oj5pZdpDH0MFSRMvd9cfuL/WpW+S+bvg==
+  dependencies:
+    "@babel/runtime" "^7.18.3"
+    hoist-non-react-statics "^3.3.2"
 
 "@testing-library/dom@^8.5.0":
   version "8.13.0"
@@ -3173,6 +3188,11 @@ cjs-module-lexer@^1.0.0:
   version "1.2.2"
   resolved "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz"
   integrity sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==
+
+classnames@^2.2.5:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
 
 clean-css@^5.2.2:
   version "5.3.0"
@@ -7877,7 +7897,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.8.1:
+prop-types@^15.6.0, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -8314,6 +8334,15 @@ renderkid@^3.0.0:
     lodash "^4.17.21"
     strip-ansi "^6.0.1"
 
+reprogressbars@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/reprogressbars/-/reprogressbars-1.0.1.tgz#0a512f02f85fbf1c6de400b87ce1cc40ce9f409a"
+  integrity sha512-x3l6QNBLqbyd2UbffIfZccfbuN27ookEA/MeAqHmLbsESksfxdVba5S2cJaTfBbNFlMomJBgUfZaLmWq8CLIcg==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+    shifty "^2.3.1"
+
 request@^2.88.0:
   version "2.88.2"
   resolved "https://registry.npmjs.org/request/-/request-2.88.2.tgz"
@@ -8686,6 +8715,13 @@ shell-quote@^1.7.3:
   version "1.7.3"
   resolved "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.3.tgz"
   integrity sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw==
+
+shifty@^2.3.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/shifty/-/shifty-2.17.1.tgz#b24f78efcec5030b830bcedf3fb474ea8570e996"
+  integrity sha512-ime0aar6UX4OHG8WjC84ThqLU6PWf/6UdSLCMJFvWmeYx1PmuxvRNwiJom4py7GVLv10xRfDKt0MssotIxkYhQ==
+  optionalDependencies:
+    fsevents "^2.3.2"
 
 side-channel@^1.0.4:
   version "1.0.4"
