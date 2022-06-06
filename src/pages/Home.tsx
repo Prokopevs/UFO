@@ -11,12 +11,13 @@ const Home = () => {
     const {setPortionNumber} = postSlice.actions
 
     React.useEffect(() => {
-        dispatch(fetchPosts(category, currentPage))
+        dispatch(fetchPosts(category, null, currentPage))
         dispatch(setPortionNumber(1)) // Установить номер порции пагинации в 1
     }, [category])
 
     return (
         <>
+            <div className='post__none' id="top">ok</div>
             {posts.map((obj, index) => (<Blocks
                 key={index}
                 isLoading={isLoading}

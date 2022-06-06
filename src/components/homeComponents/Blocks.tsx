@@ -2,8 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/redux'
 import { IPosts } from '../../models/IPosts'
-import { fetchArticle } from '../../store/reducers/ArticleSlice'
-import Spinner from '../Spinner'
+import { fetchPosts } from '../../store/reducers/PostSlice'
 
 const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, likeCount, liked, isLoading }) => {
 
@@ -15,7 +14,7 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
     }
 
     const onClickArticle = (id: number) => {
-        dispatch(fetchArticle(id))
+        dispatch(fetchPosts(null, id))
     }
     
     return (
@@ -23,7 +22,6 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
             <Link to="/article" className='post__link' onClick={() => onClickArticle(id)}>
                 <div className="post__header">
                     <img className="post__preview" src={imageUrl} alt=""></img>
-                    {isLoading && <Spinner/>}
                 </div>
 
                 <div className="post__content">

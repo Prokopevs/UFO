@@ -24,7 +24,7 @@ const Header = () => {
         dispatch(setCurrentPage(1)) // выбирая категорию пагинация начинается с 1
         dispatch(setCategory(null)) //выбираем категорию(все, популярное...)
     }
-
+    
     return (
         <header className="header">
             <div className="header__wrapper">

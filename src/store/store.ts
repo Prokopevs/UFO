@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import postReducer from './reducers/PostSlice'
 import filterReducer from './reducers/FilterSlice'
-import articleReducer from './reducers/ArticleSlice'
+import interestingReducer from './reducers/InterestingSlice'
 
 import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'reduxjs-toolkit-persist'
 import { persistCombineReducers } from 'reduxjs-toolkit-persist'
@@ -19,7 +19,7 @@ const rootPersistConfig = {
 const reducers = combineReducers({
     postReducer,
     filterReducer,
-    articleReducer
+    interestingReducer
 })
 
 const _persistedReducer = persistCombineReducers(
@@ -27,7 +27,7 @@ const _persistedReducer = persistCombineReducers(
     {
         postReducer,
         filterReducer,
-        articleReducer
+        interestingReducer
     }
 )
 

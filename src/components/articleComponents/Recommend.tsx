@@ -1,14 +1,13 @@
 import React from "react"
 import { useAppDispatch } from "../../hooks/redux"
-import { IInteresting } from "../../models/IArticles"
-import { fetchArticle } from "../../store/reducers/ArticleSlice"
+import { IInteresting } from "../../models/IInteresting"
+import { fetchPosts } from "../../store/reducers/PostSlice"
 
 const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
-
     const dispatch = useAppDispatch()
 
     const onClickArticle = (id: number) => {
-        dispatch(fetchArticle(id))
+        dispatch(fetchPosts(null, id))
     }
 
     return (

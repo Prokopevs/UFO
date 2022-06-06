@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import axios from "axios"
 import { IPosts } from "../../models/IPosts"
+import { ITotalCategories } from "../../models/ITotalCategories"
 import { AppDispatch } from "../store"
 
 interface PostState {
@@ -12,6 +13,7 @@ interface PostState {
     currentPage: number
     portionNumber: number
     key: number
+    totalCategories: ITotalCategories[]
 }
 
 const initialState: PostState = {
@@ -23,6 +25,7 @@ const initialState: PostState = {
     currentPage: 1,
     portionNumber: 1,
     key: 0,
+    totalCategories: [],
 }
 
 export const postSlice = createSlice({
@@ -48,14 +51,28 @@ export const postSlice = createSlice({
         setPortionNumber(state, action: PayloadAction<number>) {
             state.portionNumber = action.payload
         },  
+        fetchTotalCategoriesSuccess(state, action: PayloadAction<ITotalCategories[]>) {
+            state.totalCategories = action.payload
+        }
     }
 })
 
-export const fetchPosts = (category, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
+export const fetchPosts = (category, id=null, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postsFetching())
-        const response = await axios.get<any>(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${category !== null ? `category=${category}` : ''}&page=${pageNumber}&limit=${limit}`)
-        dispatch(postSlice.actions.postsFetchingSuccess(response.data))
+        const response = await axios.get<IPosts[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${id !== null ? `id=${id}` : 
+        category !== null ? `category=${category}` : ''}&${id !== null ? '' : `page=${pageNumber}&limit=${limit}`}`)
+        const firstItemInArr = response.data.slice(0, 1)
+        dispatch(postSlice.actions.postsFetchingSuccess(id === null ? response.data : firstItemInArr))
+    } catch (e) {
+        dispatch(postSlice.actions.postsFetchingError(e.message))
+    }
+}
+
+export const fetchTotalCategories = () => async (dispatch: AppDispatch) => {
+    try {
+        const response = await axios.get<ITotalCategories[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/totalCategories`)
+        dispatch(postSlice.actions.fetchTotalCategoriesSuccess(response.data))
     } catch (e) {
         dispatch(postSlice.actions.postsFetchingError(e.message))
     }

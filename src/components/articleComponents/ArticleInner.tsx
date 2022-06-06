@@ -2,9 +2,20 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import Comments from './Comments'
 import Recommend from './Recommend'
-import { IArticles } from '../../models/IArticles'
+import { IPosts } from '../../models/IPosts'
+import { useAppSelector } from '../../hooks/redux'
 
-const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName, description, text, interesting, isLoading }) => {
+const ArticleInner: React.FC<IPosts> = ({ imageUrl, name, description, date, categoryName, text }) => {
+    const { interesting } = useAppSelector(state => state.interestingReducer)
+
+    let getMeRandomElements = function(interesting, number) {
+        let result = [];
+        for (let i = 0; i < number; i++) {
+            result.push(interesting[Math.floor(Math.random()*interesting.length)]);
+        }
+        return result;
+    }
+    const selected = React.useMemo(() => getMeRandomElements(interesting, 4), [])
 
     return (
         <article className="post">
@@ -43,7 +54,7 @@ const ArticleInner: React.FC<IArticles> = ({ imageUrl, name, date, categoryName,
             <div className="recommend">
                 <h3 className="recommend__subtitle">Интересно почитать</h3>
                 <ul className="recommend__list">
-                    {interesting.map((items, index) => (<Recommend
+                    {selected.map((items, index) => (<Recommend
                         key={index}
                         {...items}
                     />))}
