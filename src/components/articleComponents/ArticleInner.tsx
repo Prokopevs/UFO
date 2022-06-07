@@ -7,15 +7,16 @@ import { useAppSelector } from '../../hooks/redux'
 
 const ArticleInner: React.FC<IPosts> = ({ imageUrl, name, description, date, categoryName, text }) => {
     const { interesting } = useAppSelector(state => state.interestingReducer)
+    
+    let getMeRandomElements
 
-    let getMeRandomElements = function(interesting, number) {
-        let result = [];
-        for (let i = 0; i < number; i++) {
-            result.push(interesting[Math.floor(Math.random()*interesting.length)]);
+    if(!!interesting.length) {
+        getMeRandomElements = function(interesting) {
+            const shufled = interesting.map(i=>[Math.random(), i]).sort().map(i=>i[1])
+            return shufled.slice(0, 4)
         }
-        return result;
     }
-    const selected = React.useMemo(() => getMeRandomElements(interesting, 4), [])
+    const selected = React.useMemo(() => getMeRandomElements(interesting), [])
 
     return (
         <article className="post">
@@ -40,7 +41,7 @@ const ArticleInner: React.FC<IPosts> = ({ imageUrl, name, description, date, cat
             <div className="post__content">
                 <div className="post__text">
                     <p>
-                        <img src={imageUrl} alt=""></img>
+                        <img className="post__inside" src={imageUrl} alt=""></img>
                     </p>
 
                     <p>{description}</p>

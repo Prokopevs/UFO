@@ -13,7 +13,7 @@ const rootPersistConfig = {
     key: 'root',
     storage: storageSession,
     stateReconciler: autoMergeLevel1,
-    blacklist: ['totalCount']
+    // blacklist: ['filterReducer']
 }
 
 const reducers = combineReducers({

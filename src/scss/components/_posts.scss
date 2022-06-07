@@ -39,6 +39,13 @@
         display: block;
         max-width: 100%;
         height: auto;
+        min-height: 40rem;
+        object-fit: cover;
+    }
+
+    &__inside {
+        min-height: 42rem;
+        object-fit: cover;
     }
 
     &__content {

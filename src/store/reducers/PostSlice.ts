@@ -9,7 +9,6 @@ interface PostState {
     isLoading: boolean
     error: string
     limit: number
-    totalCount: number
     currentPage: number
     portionNumber: number
     key: number
@@ -21,7 +20,6 @@ const initialState: PostState = {
     isLoading: false,
     error: '',
     limit: 3,
-    totalCount: 15,
     currentPage: 1,
     portionNumber: 1,
     key: 0,
@@ -35,6 +33,7 @@ export const postSlice = createSlice({
         postsFetching(state) {
             state.isLoading = true
             state.key = state.key ^ 1
+            state.posts = []
         },
         postsFetchingSuccess(state, action: PayloadAction<IPosts[]>) {
             state.isLoading = false

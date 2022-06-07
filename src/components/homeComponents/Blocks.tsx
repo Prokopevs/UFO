@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch } from '../../hooks/redux'
 import { IPosts } from '../../models/IPosts'
 import { fetchPosts } from '../../store/reducers/PostSlice'
+import { IconTwitter } from '../../pictures'
+
 
 const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, likeCount, liked, isLoading }) => {
-
     const dispatch = useAppDispatch()
     const [like, setLike] = React.useState(liked)
 
@@ -15,13 +16,13 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
 
     const onClickArticle = (id: number) => {
         dispatch(fetchPosts(null, id))
-    }
+    }   
     
     return (
         <article className={!isLoading ? "post" : "post post--opacity"}>
             <Link to="/article" className='post__link' onClick={() => onClickArticle(id)}>
                 <div className="post__header">
-                    <img className="post__preview" src={imageUrl} alt=""></img>
+                    <img className="post__preview" src={imageUrl ? imageUrl : String(IconTwitter)} alt=""></img>
                 </div>
 
                 <div className="post__content">
