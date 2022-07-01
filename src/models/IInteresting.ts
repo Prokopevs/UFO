@@ -1,5 +1,5 @@
 export interface IInteresting {
-    id: number
+    id: number 
     name: string
     date: string
 }

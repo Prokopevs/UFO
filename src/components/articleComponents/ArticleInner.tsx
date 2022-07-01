@@ -21,7 +21,7 @@ const ArticleInner: React.FC<IPosts> = ({ imageUrl, name, description, date, cat
     return (
         <article className="post">
             <div className="post__actions">
-                <Link to="/">
+                <Link to="/ufo">
                     <p>вернуться назад</p>
                 </Link>
             </div>

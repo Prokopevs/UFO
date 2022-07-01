@@ -31,7 +31,7 @@ const Header = () => {
         <header className="header">
             <div className="header__wrapper">
                 <div className="header__inner">
-                    <Link to="/" className="header__link" onClick={() => onClickCategory()}>
+                    <Link to="/ufo" className="header__link" onClick={() => onClickCategory()}>
                         <img className="header__logo" src={String(Galaxy)} alt="ufo logo"></img>
                         <p className="header__name">LANIAKEA</p>
                     </Link>

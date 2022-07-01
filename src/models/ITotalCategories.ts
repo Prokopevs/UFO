@@ -1,4 +1,4 @@
 export interface ITotalCategories {
     id: number
-    totalCount: number
+    totalCount: number 
 }

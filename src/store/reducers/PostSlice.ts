@@ -56,7 +56,7 @@ export const postSlice = createSlice({
     }
 })
 
-export const fetchPosts = (category, id=null, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
+export const fetchPosts = (category: number | null, id: number | null = null, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postsFetching())
         const response = await axios.get<IPosts[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${id !== null ? `id=${id}` : 

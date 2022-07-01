@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { fetchPosts, fetchTotalCategories, postSlice } from "../../store/reducers/PostSlice"
 import { animateScroll as scroll, scroller } from 'react-scroll'
 interface IPagination {
-    category: number
+    category: number | null
 }
 
 const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
@@ -30,7 +30,7 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
         })
     } else {
         let quantityPosts = totalCategories.find(item => item.id === category);
-        totalCount = quantityPosts.totalCount
+        totalCount = quantityPosts!.totalCount
     }
 
     const onPageChanged = (pageNumber: number) => {

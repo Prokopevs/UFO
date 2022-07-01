@@ -14,4 +14,4 @@ const Galaxy = require('../assets/img/galaxy.png')
 const Person = require('../assets/img/person.png')
 
 
-export{ All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk, Galaxy, Person}
+export{ All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitter, IconFacebook, IconVk, Galaxy, Person }

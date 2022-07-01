@@ -21,7 +21,7 @@ const Sidebar = () => {
     const {category} = useAppSelector(state => state.filterReducer)
     const {setCurrentPage} = postSlice.actions
  
-    const onSelectCategory = (index: number) => {
+    const onSelectCategory = (index: number | null) => {
         if (index===category) {      // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
             dispatch(fetchPosts(category))
         }
@@ -31,7 +31,7 @@ const Sidebar = () => {
 
     return (
         <aside className="sidebar">
-            <Link to="/" className='post__link'>
+            <Link to="/ufo" className='post__link'>
                 <Categories 
                 items={categoryNames}
                 all={All}
