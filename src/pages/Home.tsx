@@ -24,7 +24,7 @@ const Home = () => {
                 {...obj}
             />))}
             
-            {!isLoading && <Pagination category={category} />}
+             <Pagination category={category} />
         </>
     )
 }

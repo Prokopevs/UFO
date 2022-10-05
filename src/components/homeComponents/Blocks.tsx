@@ -6,13 +6,8 @@ import { fetchPosts } from '../../store/reducers/PostSlice'
 import { IconTwitter } from '../../pictures'
 
 
-const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, likeCount, liked, isLoading }) => {
+const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, isLoading }) => {
     const dispatch = useAppDispatch()
-    const [like, setLike] = React.useState(liked)
-
-    const onClickLike = () => {
-        setLike(!like)
-    }
 
     const onClickArticle = (id: number) => {
         dispatch(fetchPosts(null, id))
@@ -42,11 +37,6 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
                         <div>{categoryName}</div>
                     </li>
                 </ul>
-
-                <div className="post__like">
-                    <div className="post__like__count">{likeCount}</div>
-                    <div className={like ? 'heart heart--active' : 'heart'} onClick={onClickLike}></div>
-                </div>
             </div>
         </article>
         

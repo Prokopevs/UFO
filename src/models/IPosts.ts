@@ -6,8 +6,6 @@ export interface IPosts {
     date: string
     category: number
     categoryName: string
-    likeCount: number
-    liked: boolean
     text: string
     isLoading?: boolean
 }

@@ -35,23 +35,6 @@ const Header = () => {
                         <img className="header__logo" src={String(Galaxy)} alt="ufo logo"></img>
                         <p className="header__name">LANIAKEA</p>
                     </Link>
-
-                    <nav className="nav">
-                        <ul className="nav__list">
-                            <li className="nav__item">
-                                <div className="nav__link" >Главная</div>
-                            </li>
-                            <li className="nav__item">
-                                <div className="nav__link">Обо мне</div>
-                            </li>
-                            <li className="nav__item">
-                                <div className="nav__link">Отзывы</div>
-                            </li>
-                            <li className="nav__item">
-                                <div className="nav__link">Реклама</div>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
 
                 <div className="toggleWrapper">
