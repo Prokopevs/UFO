@@ -15,7 +15,7 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
     
     return (
         <article className={!isLoading ? "post" : "post post--opacity"}>
-            <Link to="/article" className='post__link' onClick={() => onClickArticle(id)}>
+            <Link to="/ufo/article" className='post__link' onClick={() => onClickArticle(id)}>
                 <div className="post__header">
                     <img className="post__preview" src={imageUrl ? imageUrl : String(IconTwitter)} alt=""></img>
                 </div>
