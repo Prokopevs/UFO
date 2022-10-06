@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.ce88150e.css",
-    "main.js": "/static/js/main.f03435a6.js",
-    "static/media/planets.png": "/static/media/planets.2173c8acaa09d6e3c973.png",
-    "static/media/space.png": "/static/media/space.c6d08846d3571f83c5e4.png",
-    "static/media/missions-1.png": "/static/media/missions-1.d937f94eff3dd0a7827d.png",
-    "static/media/ufo.png": "/static/media/ufo.b20e3c985df1706966ed.png",
-    "static/media/all.png": "/static/media/all.465e584e45a39e616a12.png",
-    "static/media/galaxy3.png": "/static/media/galaxy3.7b7b1cf42c7e31506985.png",
-    "static/media/galaxy.png": "/static/media/galaxy.1eee8d8ed14813f96411.png",
-    "static/media/person.png": "/static/media/person.7ffcf71e4876d305875c.png",
-    "static/media/vk.png": "/static/media/vk.46a727c40540261a6ad3.png",
-    "static/media/popular.png": "/static/media/popular.56be189bac2a1a70f4ee.png",
-    "static/media/twitter.png": "/static/media/twitter.28b4dce41e4e33858919.png",
-    "static/media/facebook.png": "/static/media/facebook.4f037d961598aff2a0a4.png",
-    "index.html": "/index.html",
-    "main.ce88150e.css.map": "/static/css/main.ce88150e.css.map",
-    "main.f03435a6.js.map": "/static/js/main.f03435a6.js.map"
+    "main.css": "/ufo/static/css/main.ce88150e.css",
+    "main.js": "/ufo/static/js/main.247b3289.js",
+    "static/media/planets.png": "/ufo/static/media/planets.2173c8acaa09d6e3c973.png",
+    "static/media/space.png": "/ufo/static/media/space.c6d08846d3571f83c5e4.png",
+    "static/media/missions-1.png": "/ufo/static/media/missions-1.d937f94eff3dd0a7827d.png",
+    "static/media/ufo.png": "/ufo/static/media/ufo.b20e3c985df1706966ed.png",
+    "static/media/all.png": "/ufo/static/media/all.465e584e45a39e616a12.png",
+    "static/media/galaxy3.png": "/ufo/static/media/galaxy3.7b7b1cf42c7e31506985.png",
+    "static/media/galaxy.png": "/ufo/static/media/galaxy.1eee8d8ed14813f96411.png",
+    "static/media/person.png": "/ufo/static/media/person.7ffcf71e4876d305875c.png",
+    "static/media/vk.png": "/ufo/static/media/vk.46a727c40540261a6ad3.png",
+    "static/media/popular.png": "/ufo/static/media/popular.56be189bac2a1a70f4ee.png",
+    "static/media/twitter.png": "/ufo/static/media/twitter.28b4dce41e4e33858919.png",
+    "static/media/facebook.png": "/ufo/static/media/facebook.4f037d961598aff2a0a4.png",
+    "index.html": "/ufo/index.html",
+    "main.ce88150e.css.map": "/ufo/static/css/main.ce88150e.css.map",
+    "main.247b3289.js.map": "/ufo/static/js/main.247b3289.js.map"
   },
   "entrypoints": [
     "static/css/main.ce88150e.css",
-    "static/js/main.f03435a6.js"
+    "static/js/main.247b3289.js"
   ]
 }
