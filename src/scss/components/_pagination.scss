@@ -39,6 +39,7 @@
     border: 0;
 
     transition: background-color .2s linear;
+    cursor: pointer;
 
     &:hover {
         background-color: lighten($header, 2%);

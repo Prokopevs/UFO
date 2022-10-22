@@ -1,20 +1,22 @@
-import React from "react"
-import ArticleInner from "../components/articleComponents/ArticleInner"
-import ArticleSkeleton from "../components/ArticleSkeleton"
-import { useAppDispatch, useAppSelector } from "../hooks/redux"
+import React from "react";
+import ArticleInner from "../components/articleComponents/ArticleInner";
+import ArticleSkeleton from "../components/ArticleSkeleton";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
 const Article = () => {
-    const { posts, isLoading } = useAppSelector(state => state.postReducer)
+    const { posts, isLoading } = useAppSelector((state) => state.postReducer);
 
     return (
         <>
-            {isLoading ? <ArticleSkeleton/> : posts.map((obj, index) => (<ArticleInner
-                key={index}
-                isLoading={isLoading}
-                {...obj}
-            />))}
+            {isLoading ? (
+                <ArticleSkeleton />
+            ) : (
+                posts.map((obj, index) => (
+                    <ArticleInner key={index} isLoading={isLoading} {...obj} />
+                ))
+            )}
         </>
-    )
-}
+    );
+};
 
-export default Article
+export default Article;

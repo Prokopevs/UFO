@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import axios from "axios"
+import { getPost, getTotalCategories } from "../../http/getPost"
 import { IPosts } from "../../models/IPosts"
 import { ITotalCategories } from "../../models/ITotalCategories"
 import { AppDispatch } from "../store"
@@ -59,8 +59,7 @@ export const postSlice = createSlice({
 export const fetchPosts = (category: number | null, id: number | null = null, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postsFetching())
-        const response = await axios.get<IPosts[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${id !== null ? `id=${id}` : 
-        category !== null ? `category=${category}` : ''}&${id !== null ? '' : `page=${pageNumber}&limit=${limit}`}`)
+        const response = await getPost(category, id, pageNumber, limit)
         const firstItemInArr = response.data.slice(0, 1)
         dispatch(postSlice.actions.postsFetchingSuccess(id === null ? response.data : firstItemInArr))
     } catch (e) {
@@ -70,7 +69,7 @@ export const fetchPosts = (category: number | null, id: number | null = null, pa
 
 export const fetchTotalCategories = () => async (dispatch: AppDispatch) => {
     try {
-        const response = await axios.get<ITotalCategories[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/totalCategories`)
+        const response = await getTotalCategories()
         dispatch(postSlice.actions.fetchTotalCategoriesSuccess(response.data))
     } catch (e) {
         dispatch(postSlice.actions.postsFetchingError(e.message))

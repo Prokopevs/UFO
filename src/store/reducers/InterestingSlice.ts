@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { IInteresting } from '../../models/IInteresting'
 import { AppDispatch } from "../store"
 import axios from 'axios';
+import { getInteresting } from '../../http/getInteresting';
 
 interface InterestingState {
     interesting: IInteresting[]
@@ -37,7 +38,7 @@ export const interestingSlice = createSlice({
 export const fetchInteresting = () => async (dispatch: AppDispatch) => {
     try {
         dispatch(interestingSlice.actions.interestingFetching())
-        const response = await axios.get<IInteresting[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/interesting`)
+        const response = await getInteresting()
         dispatch(interestingSlice.actions.interestingFetchingSuccess(response.data))
     } catch (e) {
         dispatch(interestingSlice.actions.interestingFetchingError(e.message))

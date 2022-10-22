@@ -1,22 +1,32 @@
-import React from 'react'
-import { Link } from "react-router-dom"
-import Comments from './Comments'
-import Recommend from './Recommend'
-import { IPosts } from '../../models/IPosts'
-import { useAppSelector } from '../../hooks/redux'
+import React from "react";
+import { Link } from "react-router-dom";
+import Comments from "./Comments";
+import Recommend from "./Recommend";
+import { IPosts } from "../../models/IPosts";
+import { useAppSelector } from "../../hooks/redux";
 
-const ArticleInner: React.FC<IPosts> = ({ imageUrl, name, description, date, categoryName, text }) => {
-    const { interesting } = useAppSelector(state => state.interestingReducer)
-    
-    let getMeRandomElements
+const ArticleInner: React.FC<IPosts> = ({
+    imageUrl,
+    name,
+    description,
+    date,
+    categoryName,
+    text,
+}) => {
+    const { interesting } = useAppSelector((state) => state.interestingReducer);
 
-    if(!!interesting.length) {
-        getMeRandomElements = function(interesting) {
-            const shufled = interesting.map(i=>[Math.random(), i]).sort().map(i=>i[1])
-            return shufled.slice(0, 4)
-        }
+    let getMeRandomElements;
+
+    if (!!interesting.length) {
+        getMeRandomElements = function (interesting) {
+            const shufled = interesting
+                .map((i) => [Math.random(), i])
+                .sort()
+                .map((i) => i[1]);
+            return shufled.slice(0, 4);
+        };
     }
-    const selected = React.useMemo(() => getMeRandomElements(interesting), [])
+    const selected = React.useMemo(() => getMeRandomElements(interesting), []);
 
     return (
         <article className="post">
@@ -55,17 +65,15 @@ const ArticleInner: React.FC<IPosts> = ({ imageUrl, name, description, date, cat
             <div className="recommend">
                 <h3 className="recommend__subtitle">Интересно почитать</h3>
                 <ul className="recommend__list">
-                    {selected.map((items, index) => (<Recommend
-                        key={index}
-                        {...items}
-                    />))}
+                    {selected.map((items, index) => (
+                        <Recommend key={index} {...items} />
+                    ))}
                 </ul>
             </div>
 
             <Comments />
+        </article>
+    );
+};
 
-        </article >
-    )
-}
-
-export default ArticleInner
+export default ArticleInner;
