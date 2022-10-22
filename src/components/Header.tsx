@@ -21,7 +21,7 @@ const Header = ({ changeTheme, dark, setBurger, burger }) => {
     }, []);
 
     const onClickCategory = () => {
-        if (category === null) {
+        if (category === null) {      // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
             dispatch(fetchPosts(null));
         }
         dispatch(setCurrentPage(1)); // выбирая категорию пагинация начинается с 1

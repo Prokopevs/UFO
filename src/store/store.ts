@@ -9,12 +9,12 @@ import storage from 'reduxjs-toolkit-persist/lib/storage'
 import storageSession from 'redux-persist/lib/storage/session'
 import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMergeLevel1'
 
-const rootPersistConfig = {
-    key: 'root',
-    storage: storageSession,
-    stateReconciler: autoMergeLevel1,
-    // blacklist: ['filterReducer']
-}
+// const rootPersistConfig = {
+//     key: 'root',
+//     storage: storageSession,
+//     stateReconciler: autoMergeLevel1,
+//     // blacklist: ['filterReducer']
+// }
 
 const reducers = combineReducers({
     postReducer,
@@ -22,26 +22,34 @@ const reducers = combineReducers({
     interestingReducer
 })
 
-const _persistedReducer = persistCombineReducers(
-    rootPersistConfig,
-    {
+export const store = configureStore({
+    reducer: {
         postReducer,
         filterReducer,
         interestingReducer
     }
-)
+});
 
-export const store = configureStore({
-    reducer: _persistedReducer,
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware({
-            serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-            },
-        }),
-})
+// const _persistedReducer = persistCombineReducers(
+//     rootPersistConfig,
+//     {
+//         postReducer,
+//         filterReducer,
+//         interestingReducer
+//     }
+// )
 
-export const persistor = persistStore(store)
+// export const store = configureStore({
+//     reducer: _persistedReducer,
+//     middleware: (getDefaultMiddleware) =>
+//         getDefaultMiddleware({
+//             serializableCheck: {
+//                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//             },
+//         }),
+// })
+
+// export const persistor = persistStore(store)
 
 export type RootState = ReturnType<typeof reducers>
 export type AppDispatch = typeof store.dispatch

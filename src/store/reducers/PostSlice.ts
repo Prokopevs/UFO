@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { getPost, getTotalCategories } from "../../http/getPost"
-import { IPosts } from "../../models/IPosts"
+import { IPosts, UrlParams } from "../../models/IPosts"
 import { ITotalCategories } from "../../models/ITotalCategories"
 import { AppDispatch } from "../store"
 
@@ -13,6 +13,7 @@ interface PostState {
     portionNumber: number
     key: number
     totalCategories: ITotalCategories[]
+    flag: boolean
 }
 
 const initialState: PostState = {
@@ -24,6 +25,7 @@ const initialState: PostState = {
     portionNumber: 1,
     key: 0,
     totalCategories: [],
+    flag: false,
 }
 
 export const postSlice = createSlice({
@@ -51,7 +53,20 @@ export const postSlice = createSlice({
         },  
         fetchTotalCategoriesSuccess(state, action: PayloadAction<ITotalCategories[]>) {
             state.totalCategories = action.payload
-        }
+        },
+        setUrlPage(state, action: PayloadAction<UrlParams>) {
+            if(action.payload.page) {
+                state.currentPage = Number(action.payload.page)
+            }
+            if(action.payload.newFlag === false) {
+                state.flag = !state.flag
+            } else if (action.payload.newFlag === true) {
+                state.flag = !state.flag
+            }
+        },
+        setFlag(state) {
+            state.flag = !state.flag
+        },
     }
 })
 

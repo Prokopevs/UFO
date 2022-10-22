@@ -1,18 +1,10 @@
 import React from "react";
 import Categories from "./Categories";
-import {
-    All,
-    logoPopular,
-    IconGalaxy,
-    Ufo,
-    Space,
-    Planets,
-    Missions,
-} from "../../pictures";
+import { All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions } from "../../pictures";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { filterSlice } from "../../store/reducers/FilterSlice";
 import { Link } from "react-router-dom";
-import { fetchPosts, postSlice } from "../../store/reducers/PostSlice";
+import { postSlice } from "../../store/reducers/PostSlice";
 import {
     RedditIcon,
     RedditShareButton,
@@ -21,7 +13,6 @@ import {
     VKIcon,
     VKShareButton,
 } from "react-share";
-import Burger from "./Burger";
 
 const categoryNames = [
     { name: "Популярное", icon: logoPopular },
@@ -36,13 +27,12 @@ const Sidebar = ({ burger }) => {
     const dispatch = useAppDispatch();
     const { setCategory } = filterSlice.actions;
     const { category } = useAppSelector((state) => state.filterReducer);
-    const { setCurrentPage } = postSlice.actions;
+    const { setCurrentPage, setFlag } = postSlice.actions;
     const shareUrl = "https://";
 
     const onSelectCategory = (index: number | null) => {
-        if (index === category) {
-            // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
-            dispatch(fetchPosts(category));
+        if (index === category) { // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
+            dispatch(setFlag());
         }
         dispatch(setCurrentPage(1)); // выбирая категорию пагинация начинается с 1
         dispatch(setCategory(index)); //выбираем категорию(все, популярное...)
@@ -62,15 +52,15 @@ const Sidebar = ({ burger }) => {
             <div className="social__share">Поделиться</div>
             <div className="social">
                 <RedditShareButton url={shareUrl}>
-                    <RedditIcon size={27} round={true} className="social__link"/>
+                    <RedditIcon size={27} round={true} className="social__link" />
                 </RedditShareButton>
 
                 <VKShareButton url={shareUrl}>
-                    <VKIcon size={27} round={true} className="social__link"/>
+                    <VKIcon size={27} round={true} className="social__link" />
                 </VKShareButton>
 
                 <TwitterShareButton url={shareUrl}>
-                    <TwitterIcon size={27} round={true} className="social__link"/>
+                    <TwitterIcon size={27} round={true} className="social__link" />
                 </TwitterShareButton>
             </div>
         </aside>
