@@ -1,6 +1,7 @@
 import React from 'react'
 import Blocks from '../components/homeComponents/Blocks'
 import Pagination from '../components/homeComponents/Pagination'
+import Burger from '../components/sidebarComponents/Burger'
 import { useAppDispatch, useAppSelector } from '../hooks/redux'
 import { fetchPosts, postSlice } from '../store/reducers/PostSlice'
 
@@ -17,7 +18,7 @@ const Home = () => {
 
     return (
         <>
-            <div className='post__none' id="top">ok</div>
+            <div className='post__none' id="top"></div>
             {posts.map((obj, index) => (<Blocks
                 key={index}
                 isLoading={isLoading}

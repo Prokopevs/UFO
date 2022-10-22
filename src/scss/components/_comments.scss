@@ -26,19 +26,25 @@
 }
 
 .comments__name {
-    color: $white;
+    @include themed() {
+        color: t("whites");
+    }
     font-weight: 500;
     font-size: 1.25rem;
 }
 
 .comments__pubdate {
-    color: $gray;
+    @include themed() {
+        color: t("grays");
+    }
 }
 
 .comments__text {
     font-size: 1.25rem;
     line-height: 1.4;
-    color: $white;
+    @include themed() {
+        color: t("whites");
+    }
 }
 
 

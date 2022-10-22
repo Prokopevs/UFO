@@ -3,9 +3,11 @@
     padding: 2.5rem;
     overflow: hidden;
 
-    background-color: var(--background);
-    box-shadow: 0 15px 25px rgba($black, .35);
-    border-radius: 5px;
+    @include themed() {
+        background-color: t("primary");
+        box-shadow: 0 15px 25px rgba(t("blacks"), .35);
+    }
+    border-radius: 10px;
 
         &--opacity {
             opacity: 0.5;
@@ -57,7 +59,9 @@
     
         font-family: 'Open Sans', sans-serif;
         font-size: 2.3rem;
-        color: $white;
+        @include themed() {
+            color: t("whites");
+        }
         font-weight: 600;
 
         &--mb1 {
@@ -75,15 +79,21 @@
 
     &__description {
         font-size: 1.6rem;
-        color: darken($white, 10%);
+        @include themed() {
+            color: t("darkenWhite");
+        }
     }
 
     &__text {
         padding-bottom: 1rem;
         font-size: 1.6rem;
-        color: darken($white, 10%);
+        @include themed() {
+            color: t("darkenWhite");
+        }
 
-        border-bottom: 1px solid $gray;
+        @include themed() {
+            border-bottom: 1px solid t("grays");
+        }
 
         p {
             margin-bottom: 2rem;
@@ -107,8 +117,10 @@
 
     &__data {
         display: flex;
-    
-        color: $gray;
+
+        @include themed() {
+            color: t("grays");
+        }
         line-height: 1.2;
 
         &-item {
@@ -123,7 +135,9 @@
                 top: -2px;
         
                 border-radius: 50%;
-                background-color: $gray;   
+                @include themed() {
+                    background-color: t("grays");
+                }
             }
         }
     }
@@ -133,7 +147,9 @@
     margin-bottom: 1.5rem;
 
     font-size: 1.2rem;
-    color: $white;
+    @include themed() {
+        color: t("whites");
+    }
 
     a {
         color: inherit;

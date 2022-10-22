@@ -16,10 +16,14 @@
 
     font-family: inherit;
     font-size: 1.4rem;
-    color: $white;
+    @include themed() {
+        color: t("whites");
+    }
 
     &::placeholder {
-        color: rgba($white, .2);
+        @include themed() {
+            color: t("darkenWhite");
+        }   
     }
 
     &:focus + .form__line {

@@ -4,15 +4,19 @@
     align-items: center;
 
     &__count {
-        color: $gray;
         margin-right: 1.3rem;
+        @include themed() {
+            color: t("grays");
+        }
     }
 }
 
 .heart {
     width: $heart;
     height: $heart;
-    background-color: $gray; 
+    @include themed() {
+        background-color: t("grays");
+    }
     transform: rotate(45deg);
     position: relative; 
     top: 0.15rem;
@@ -23,7 +27,9 @@
         display: block;
         width: $heart;
         height: $heart;
-        background-color: $gray;
+        @include themed() {
+            background-color: t("grays");
+        }
         border-radius: 50%; 
         position: absolute;
     }

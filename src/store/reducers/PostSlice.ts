@@ -33,7 +33,6 @@ export const postSlice = createSlice({
         postsFetching(state) {
             state.isLoading = true
             state.key = state.key ^ 1
-            // state.posts = []
         },
         postsFetchingSuccess(state, action: PayloadAction<IPosts[]>) {
             state.isLoading = false

@@ -71,7 +71,7 @@ const ArticleInner: React.FC<IPosts> = ({
                 </ul>
             </div>
 
-            <Comments />
+            {/* <Comments /> */}
         </article>
     );
 };
