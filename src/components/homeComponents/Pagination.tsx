@@ -30,7 +30,9 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
         })
     } else {
         let quantityPosts = totalCategories.find(item => item.id === category);
-        totalCount = quantityPosts!.totalCount
+        if(quantityPosts) {
+            totalCount = quantityPosts.totalCount
+        }
     }
 
     const onPageChanged = (pageNumber: number) => {

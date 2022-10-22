@@ -10,21 +10,21 @@ import Progress from "./ProgressBar/Progress"
 const Header = () => {
     const dispatch = useAppDispatch()
     const { setCategory } = filterSlice.actions
-    const { setCurrentPage } = postSlice.actions
+    const { setCurrentPage, setFlag } = postSlice.actions
     const { isLoading, key } = useAppSelector(state => state.postReducer)
-    const {category} = useAppSelector(state => state.filterReducer)
+    const { category } = useAppSelector(state => state.filterReducer)
 
     React.useEffect(() => {
         document.title = "LANIAKEA"
         dispatch(fetchInteresting())
     }, [])
-
+    
     const onClickCategory = () => {
-        if (category===null) {      
-            dispatch(fetchPosts(null))
+        if (category===null) {      // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
+            dispatch(setFlag())
         }
         dispatch(setCurrentPage(1)) // выбирая категорию пагинация начинается с 1
-        dispatch(setCategory(null)) //выбираем категорию(все, популярное...)
+        dispatch(setCategory(null)) //выбираем категорию(все)
     }
     
     return (

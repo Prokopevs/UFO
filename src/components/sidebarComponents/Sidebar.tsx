@@ -19,11 +19,11 @@ const Sidebar = () => {
     const dispatch = useAppDispatch()
     const {setCategory} = filterSlice.actions
     const {category} = useAppSelector(state => state.filterReducer)
-    const {setCurrentPage} = postSlice.actions
+    const {setCurrentPage, setFlag} = postSlice.actions
  
     const onSelectCategory = (index: number | null) => {
         if (index===category) {      // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
-            dispatch(fetchPosts(category))
+            dispatch(setFlag())  
         }
         dispatch(setCurrentPage(1)) // выбирая категорию пагинация начинается с 1
         dispatch(setCategory(index)) //выбираем категорию(все, популярное...)

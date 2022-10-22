@@ -9,3 +9,10 @@ export interface IPosts {
     text: string
     isLoading?: boolean
 }
+
+export interface UrlParams {
+    category?: number
+    page?: number
+    limit?: number
+    newFlag?: boolean
+}
