@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { filterSlice } from "../../store/reducers/FilterSlice";
 import { Link } from "react-router-dom";
 import { postSlice } from "../../store/reducers/PostSlice";
+import { animateScroll as scroll, scroller } from 'react-scroll'
 import {
     RedditIcon,
     RedditShareButton,
@@ -27,19 +28,29 @@ const Sidebar = ({ burger }) => {
     const dispatch = useAppDispatch();
     const { setCategory } = filterSlice.actions;
     const { category } = useAppSelector((state) => state.filterReducer);
-    const { setCurrentPage, setFlag } = postSlice.actions;
+    const { setCurrentPage, setFlag, setPortionNumber } = postSlice.actions;
     const shareUrl = "https://";
+
+    const scrollTo = () => {
+        scroller.scrollTo('top', {
+          duration: 1000,
+          delay: 200,
+          smooth: 'easeInOutQuart'
+        })
+    }
 
     const onSelectCategory = (index: number | null) => {
         if (index === category) { // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
             dispatch(setFlag());
+            scrollTo()
         }
         dispatch(setCurrentPage(1)); // выбирая категорию пагинация начинается с 1
+        dispatch(setPortionNumber(1)) // Установить номер порции пагинации в 1
         dispatch(setCategory(index)); //выбираем категорию(все, популярное...)
     };
 
     return (
-        <aside className={burger ? "sidebar" : "sidebar none"}>
+        <aside className={burger ? "sidebar active" : "sidebar"}>
             <Link to="/ufo" className="post__link">
                 <Categories
                     items={categoryNames}

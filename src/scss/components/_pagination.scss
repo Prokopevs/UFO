@@ -60,10 +60,14 @@
 }
 
 .pagination__link.active {
-    background-color: $cobalt;
-    box-shadow: 0 0 10px rgba($cobalt, .15);
+    @include themed() {
+        box-shadow: 0 0 10px rgba( t("cobalt"), .15);
+        background-color: t("cobalt");
+    }
 
     &:hover {
-        background-color: $cobalt;
+        @include themed() {
+            background-color: t("cobalt");
+        }
     }
 }

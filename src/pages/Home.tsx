@@ -17,12 +17,11 @@ const Home = () => {
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false)
     const { category } = useAppSelector((state) => state.filterReducer)
-    const { setPortionNumber, setUrlPage } = postSlice.actions
+    const { setUrlPage } = postSlice.actions
     const { setUrlCategory } = filterSlice.actions
 
     const getPost = () => {
         dispatch(fetchPosts(category, null, currentPage))
-        dispatch(setPortionNumber(1)) // Установить номер порции пагинации в 1
     }
 
     // Парсим параметры при первом рендере и отправляем их в redux
@@ -88,7 +87,7 @@ const Home = () => {
                 {...obj}
             />))}
             
-             <Pagination category={category} />
+            <Pagination category={category} />
         </>
     )
 }

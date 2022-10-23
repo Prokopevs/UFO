@@ -12,6 +12,10 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
     const onClickArticle = (id: number) => {
         dispatch(fetchPosts(null, id))
     }   
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     
     return (
         <article className={!isLoading ? "post" : "post post--opacity"}>
@@ -39,7 +43,6 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
                 </ul>
             </div>
         </article>
-        
     )
 }
 

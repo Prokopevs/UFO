@@ -10,11 +10,14 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
     const dispatch = useAppDispatch()
     const { limit, currentPage, portionNumber, totalCategories } = useAppSelector(state => state.postReducer)
     const { setCurrentPage, setPortionNumber } = postSlice.actions
-    console.log(currentPage)
 
     React.useEffect(() => {
         dispatch(fetchTotalCategories())
     }, [])
+
+    React.useEffect(() => {
+        onPortionChanged(Math.ceil(currentPage / 3))
+    }, [currentPage])
 
     const scrollTo = () => {
         scroller.scrollTo('top', {
@@ -45,7 +48,7 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
         dispatch(setPortionNumber(portionNumber))
     }
 
-    const pagesCount = Math.ceil(totalCount / limit); // all posts divide limit
+    const pagesCount = Math.ceil(totalCount / limit); // 15 статей / 3 = 5
     let pages: Array<number> = [];                    // 1 2 3 4 5...
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
@@ -53,10 +56,10 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
 
     const portionSize = 3
 
-    let portionCount = Math.ceil(pagesCount / portionSize)
-    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1
-    let rightPortionPageNumber = portionNumber * portionSize
-
+    let portionCount = Math.ceil(pagesCount / portionSize)               // 5 / 3 = 2
+    let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1    // (1(по умолчанию) - 1) * 3 + 1 = 0
+    let rightPortionPageNumber = portionNumber * portionSize             // 1 * 3
+ 
     return (
         <ul className="pagination">
             <li className="pagination__item">

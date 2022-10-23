@@ -11,10 +11,13 @@
     top: $header-height;
     left: 0;
     z-index: $z-index-sidebar;
+
+    transform: translateX(-100%);
+    transition: all 0.2s;
 }
 
-.sidebar.none {
-    display: none;
+.sidebar.active {
+    transform: translateX(0);
 }
 
 .category {
