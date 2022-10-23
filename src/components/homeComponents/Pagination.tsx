@@ -10,6 +10,7 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
     const dispatch = useAppDispatch()
     const { limit, currentPage, portionNumber, totalCategories } = useAppSelector(state => state.postReducer)
     const { setCurrentPage, setPortionNumber } = postSlice.actions
+    console.log(currentPage)
 
     React.useEffect(() => {
         dispatch(fetchTotalCategories())
@@ -67,7 +68,7 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
                 .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p, index) => (
                     <li className="pagination__item" key={index} onClick={() => onPageChanged(p) }>
-                        <a className={currentPage === p ? "pagination__link  pagination__link--active" : "pagination__link"} >{p}</a>
+                        <a className={currentPage === p ? "pagination__link  pagination__link active" : "pagination__link"} >{p}</a>
                     </li>
                 ))}
 

@@ -57,13 +57,13 @@
             }
         }
     }
+}
 
-    &--active {
+.pagination__link.active {
+    background-color: $cobalt;
+    box-shadow: 0 0 10px rgba($cobalt, .15);
+
+    &:hover {
         background-color: $cobalt;
-        box-shadow: 0 0 10px rgba($cobalt, .15);
-
-        &:hover {
-            background-color: $cobalt;
-        }
     }
 }
