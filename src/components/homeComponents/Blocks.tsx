@@ -1,23 +1,38 @@
-import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { useAppDispatch } from '../../hooks/redux'
-import { IPosts } from '../../models/IPosts'
-import { fetchPosts } from '../../store/reducers/PostSlice'
-import { IconTwitter } from '../../pictures'
+import React, { useEffect } from "react"
+import { Link } from "react-router-dom"
+import { useAppDispatch } from "../../hooks/redux"
+import { IArticle } from "../../models/IArticle"
+import { IconTwitter } from "../../pictures"
+import { fetchArticle } from "../../store/reducers/ArticleSlice"
 
-
-const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categoryName, isLoading }) => {
+const Blocks: React.FC<IArticle> = ({
+    id,
+    imageUrl,
+    name,
+    description,
+    date,
+    categoryName,
+    isLoading,
+}) => {
     const dispatch = useAppDispatch()
 
     const onClickArticle = (id: number) => {
-        dispatch(fetchPosts(null, id))
-    }   
-    
+        dispatch(fetchArticle(id))
+    }
+
     return (
-        <article className={!isLoading ? "post" : "post post--opacity"}>
-            <Link to="/ufo/article" className='post__link' onClick={() => onClickArticle(id)}>
+        <article className={isLoading ? "post post--opacity" : "post"}>
+            <Link
+                to="/ufo/article"
+                className="post__link"
+                onClick={() => onClickArticle(id)}
+            >
                 <div className="post__header">
-                    <img className="post__preview" src={imageUrl ? imageUrl : String(IconTwitter)} alt=""></img>
+                    <img
+                        className="post__preview"
+                        src={imageUrl ? imageUrl : String(IconTwitter)}
+                        alt=""
+                    ></img>
                 </div>
 
                 <div className="post__content">
@@ -39,7 +54,6 @@ const Blocks: React.FC<IPosts> = ({ id, imageUrl, name, description, date, categ
                 </ul>
             </div>
         </article>
-        
     )
 }
 

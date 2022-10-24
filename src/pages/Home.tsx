@@ -21,7 +21,7 @@ const Home = () => {
     const { setUrlCategory } = filterSlice.actions
 
     const getPost = () => {
-        dispatch(fetchPosts(category, null, currentPage))
+        dispatch(fetchPosts(category, currentPage))
         dispatch(setPortionNumber(1)) // Установить номер порции пагинации в 1
     }
 

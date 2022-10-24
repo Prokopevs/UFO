@@ -37,7 +37,7 @@ const Pagination: React.FC<IPagination> = React.memo(({ category }) => {
 
     const onPageChanged = (pageNumber: number) => {
         dispatch(setCurrentPage(pageNumber))
-        dispatch(fetchPosts(category, null, pageNumber, limit))
+        dispatch(fetchPosts(category, pageNumber, limit))
         scrollTo()
     }
     const onPortionChanged = (portionNumber: number) => {

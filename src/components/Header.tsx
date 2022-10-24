@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux"
 import { Galaxy } from '../pictures'
 import { filterSlice } from "../store/reducers/FilterSlice"
 import { fetchInteresting } from "../store/reducers/InterestingSlice"
-import { fetchPosts, postSlice } from "../store/reducers/PostSlice"
+import { postSlice } from "../store/reducers/PostSlice"
 import Progress from "./ProgressBar/Progress"
 
 const Header = () => {

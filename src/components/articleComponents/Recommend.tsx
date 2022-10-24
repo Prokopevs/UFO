@@ -1,14 +1,14 @@
-import React from "react";
-import { useAppDispatch } from "../../hooks/redux";
-import { IInteresting } from "../../models/IInteresting";
-import { fetchPosts } from "../../store/reducers/PostSlice";
+import React from "react"
+import { useAppDispatch } from "../../hooks/redux"
+import { IInteresting } from "../../models/IInteresting"
+import { fetchArticle } from "../../store/reducers/ArticleSlice"
 
 const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
-    const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch()
 
     const onClickArticle = (id: number) => {
-        dispatch(fetchPosts(null, id));
-    };
+        dispatch(fetchArticle(id))
+    }
 
     return (
         <li className="recommend__list-item">
@@ -21,7 +21,7 @@ const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
                 {date}
             </time>
         </li>
-    );
-};
+    )
+}
 
-export default Recommend;
+export default Recommend

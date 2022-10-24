@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { getPost, getTotalCategories } from "../../http/getPost"
-import { IPosts, UrlParams } from "../../models/IPosts"
+import { IArticle } from "../../models/IArticle"
+import { UrlParams } from "../../models/IPosts"
 import { ITotalCategories } from "../../models/ITotalCategories"
 import { AppDispatch } from "../store"
 
 interface PostState {
-    posts: IPosts[]
+    posts: IArticle[]
     isLoading: boolean
     error: string
     limit: number
@@ -35,9 +36,8 @@ export const postSlice = createSlice({
         postsFetching(state) {
             state.isLoading = true
             state.key = state.key ^ 1
-            // state.posts = []
         },
-        postsFetchingSuccess(state, action: PayloadAction<IPosts[]>) {
+        postsFetchingSuccess(state, action: PayloadAction<IArticle[]>) {
             state.isLoading = false
             state.error = ''
             state.posts = action.payload
@@ -71,12 +71,11 @@ export const postSlice = createSlice({
     }
 })
 
-export const fetchPosts = (category: number | null, id: number | null = null, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
+export const fetchPosts = (category: number | null, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postsFetching())
-        const response = await getPost(category, id, pageNumber, limit)
-        const firstItemInArr = response.data.slice(0, 1)
-        dispatch(postSlice.actions.postsFetchingSuccess(id === null ? response.data : firstItemInArr))
+        const response = await getPost(category, pageNumber, limit)
+        dispatch(postSlice.actions.postsFetchingSuccess(response.data))
     } catch (e) {
         dispatch(postSlice.actions.postsFetchingError(e.message))
     }

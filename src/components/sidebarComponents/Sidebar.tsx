@@ -4,7 +4,7 @@ import { All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions, IconTwitte
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { filterSlice } from "../../store/reducers/FilterSlice"
 import { Link } from "react-router-dom"
-import { fetchPosts, postSlice } from "../../store/reducers/PostSlice"
+import { postSlice } from "../../store/reducers/PostSlice"
 
 const categoryNames = [
     { name: 'Популярное', icon: logoPopular },
