@@ -1,4 +1,3 @@
-
 .pagination {
     display: flex;
     justify-content: center;
@@ -27,13 +26,15 @@
     width: 4rem;
     height: 4rem;
 
-    background-color: $header;
+    @include themed() {
+        color: t("whites");
+        background-color: t("header");
+        box-shadow: 0 0 10px rgba(t("blacks"), .15);
+    }
     border-radius: 3px;
-    box-shadow: 0 0 10px rgba($black, .15);
 
     font-size: 1.4rem;
     line-height: 4rem;
-    color: $white;
     text-align: center;
     text-decoration: none;
     border: 0;
@@ -42,23 +43,31 @@
     cursor: pointer;
 
     &:hover {
-        background-color: lighten($header, 2%);
+        @include themed() {
+            background-color: lighten(t("header"), 2%);
+        }
     }
 
     &--button {
         cursor: not-allowed;
 
         &:hover {
-            background-color: $header;
+            @include themed() {
+                background-color: t("header");
+            }
         }
     }
+}
 
-    &--active {
-        background-color: $cobalt;
-        box-shadow: 0 0 10px rgba($cobalt, .15);
+.pagination__link.active {
+    @include themed() {
+        box-shadow: 0 0 10px rgba( t("cobalt"), .15);
+        background-color: t("cobalt");
+    }
 
-        &:hover {
-            background-color: $cobalt;
+    &:hover {
+        @include themed() {
+            background-color: t("cobalt");
         }
     }
 }

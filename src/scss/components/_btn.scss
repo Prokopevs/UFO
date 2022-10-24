@@ -3,7 +3,10 @@
     vertical-align: top;
     padding: 1.12em 2.1em;
 
-    background: $secondary;
+    @include themed() {
+        background-color: t("secondary");
+        color: t("whites");
+    }
     border: none;
     cursor: pointer;
     border-radius: 3em;
@@ -12,7 +15,6 @@
     font-size: 1.2rem;
     line-height: 1.1;
     font-weight: 500;
-    color: $white;
     text-decoration: none;
 
     transition: background-color .2s linear;

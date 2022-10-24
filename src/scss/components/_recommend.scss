@@ -1,5 +1,7 @@
 .recommend {
-    border-bottom: 1px solid $gray;
+    @include themed() {
+        border-bottom: 1px solid t("grays");
+    }
     padding-bottom: .5rem;
 }
 
@@ -8,7 +10,9 @@
     margin-bottom: 2rem;
 
     font-size: 1.8rem;
-    color: $white;
+    @include themed() {
+        color: t("whites");
+    }
     font-family: 'Nunito', sans-serif;
 } 
 
@@ -24,12 +28,15 @@
 
 .recommend__list-title {
     font-size: 1.5rem;
-    color: #F3EBA2;
+    @include themed() {
+        color: t("recommend");
+    }
     font-weight: 500;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     margin-right: 3rem;
+    cursor: pointer;
     
     margin-bottom: 0.3rem;
     font-family: 'Nunito', sans-serif;
@@ -42,5 +49,7 @@
 
 .recommend__list-date {
     font-size: 1.2rem;
-    color: $gray;
+    @include themed() {
+        color: t("grays");
+    }
 }

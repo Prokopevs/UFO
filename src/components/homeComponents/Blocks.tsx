@@ -20,6 +20,10 @@ const Blocks: React.FC<IArticle> = ({
         dispatch(fetchArticle(id))
     }
 
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <article className={isLoading ? "post post--opacity" : "post"}>
             <Link

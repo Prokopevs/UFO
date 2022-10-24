@@ -1,18 +1,75 @@
-$primary:   #202020;
-$secondary: #151414;
-$header:    #080808;
-$cobalt:    #3137C9;
-$white:     #fff;
-$black:     #000;
-$gray:      #828282;
+$primary:     #202020;
+$secondary:   #151414;
+$header:      #080808;
+$cobalt:      #3137C9;
+$whites:      #fff;
+$darkenWhite: #e3e3e3;
+$blacks:      #000;
+$grays:       #828282;
+$recommend:   #ffdd00;
 
+$primary-l:     #ebe9e9;
+$secondary-l:   #fffefe;
+$header-l:      #e2e1e1;
+$cobalt-l:      #656ae3;
+$whites-l:      #000000;
+$darkenWhite-l: #212121;
+$blacks-l:      #7c7979;
+$grays-l:       #383838;
+$recommend-l:   #2417e9;
 
 
 $z-index-sidebar: 100;
 $z-index-header:  1000;
-
 $header-height: 5.5rem;
 $sidebar-width: 29rem;
+$heart: 11px;
 
-$heart: 11px
+
+
+
+$themes: (
+        default: (
+                primary: $primary,
+                secondary: $secondary,
+                header: $header,
+                cobalt: $cobalt,
+                whites: $whites,
+                darkenWhite: $darkenWhite,
+                blacks: $blacks,
+                grays: $grays,
+                recommend: $recommend,
+        ),
+        light: (
+                primary: $primary-l,
+                secondary: $secondary-l,
+                header: $header-l,
+                cobalt: $cobalt-l,
+                whites: $whites-l,
+                darkenWhite: $darkenWhite-l,
+                blacks: $blacks-l,
+                grays: $grays-l,
+                recommend: $recommend-l,
+        ),
+);
+
+@mixin themed() {
+    @each $theme, $map in $themes {
+      .theme--#{$theme} & {
+        $theme-map: () !global;
+        @each $key, $submap in $map {
+          $value: map-get(map-get($themes, $theme), '#{$key}');
+          $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        }
+        @content;
+        $theme-map: null !global;
+      }
+    }
+  }
+  
+  @function t($key) {
+    @return map-get($theme-map, $key);
+  }
+
+
 

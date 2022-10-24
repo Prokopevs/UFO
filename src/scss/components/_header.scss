@@ -2,8 +2,10 @@
     width: 100%;
     height: $header-height;
 
-    background-color: $header;
-    box-shadow: 0 5px 22px rgba($black, .25);
+    @include themed() {
+        background-color: t("header");
+        box-shadow: 0 5px 22px rgba(t("blacks"), .25);
+    }
 
     position: fixed;
     top: 0;
@@ -30,7 +32,7 @@
 
     &__logo {
         width: 4.6rem;
-        margin: 0.1rem 0 0 2.1rem;
+        margin: 0.35rem 0 0 2.1rem;
         display: block;
     }
 
@@ -40,7 +42,10 @@
         padding-top: 0;
         font-family: inherit;
         font-family: 'Bungee', cursive;
-        color: $white
+
+        @include themed() {
+            color: t("whites");
+        }
     }
 }
 
@@ -57,7 +62,9 @@
     font-size: 1.2rem;
     line-height: 1.1;
     text-transform: uppercase;
-    color: $white;
+    @include themed() {
+        color: t("whites");
+    }
     text-decoration: none;
     font-family: 'Jost', sans-serif;
 
