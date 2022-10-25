@@ -21,7 +21,7 @@ const Home = () => {
     const { setUrlCategory } = filterSlice.actions
 
     const getPost = () => {
-        dispatch(fetchPosts(category, null, currentPage))
+        dispatch(fetchPosts(category, currentPage))
     }
 
     // Парсим параметры при первом рендере и отправляем их в redux
@@ -80,13 +80,11 @@ const Home = () => {
 
     return (
         <>
-            <div className='post__none' id="top"></div>
-            {posts.map((obj, index) => (<Blocks
-                key={index}
-                isLoading={isLoading}
-                {...obj}
-            />))}
-            
+            <div className="post__none" id="top"></div>
+            {posts.map((obj, index) => (
+                <Blocks key={index} isLoading={isLoading} {...obj} />
+            ))}
+
             <Pagination category={category} />
         </>
     )

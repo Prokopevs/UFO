@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import postReducer from './reducers/PostSlice'
 import filterReducer from './reducers/FilterSlice'
 import interestingReducer from './reducers/InterestingSlice'
+import ArticleReducer from './reducers/ArticleSlice'
 
 import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'reduxjs-toolkit-persist'
 import { persistCombineReducers } from 'reduxjs-toolkit-persist'
@@ -19,14 +20,16 @@ import autoMergeLevel1 from 'reduxjs-toolkit-persist/lib/stateReconciler/autoMer
 const reducers = combineReducers({
     postReducer,
     filterReducer,
-    interestingReducer
+    interestingReducer,
+    ArticleReducer,
 })
 
 export const store = configureStore({
     reducer: {
         postReducer,
         filterReducer,
-        interestingReducer
+        interestingReducer,
+        ArticleReducer,
     }
 });
 
