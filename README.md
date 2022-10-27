@@ -1,6 +1,6 @@
 # <center>LANIAKEA</center>
 
-<p align="center"> <img  src="src/assets/img/Laniakea.png"></p>
+<p align="center"> <img  src="src/assets/img/pic.png"></p>
 
 ---
 
