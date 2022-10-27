@@ -7,6 +7,14 @@
     }
     width: 100%;
     height: 100%;
+
+    @media(max-width: 600px) {
+        padding-top: 8rem;
+    }
+
+    @media(max-width: 450px) {
+        padding-top: 7rem;
+    }
 }
 
 .main.center {
@@ -18,6 +26,16 @@
     margin: 0 auto;
     padding-left: 4rem;
     padding-right: 4rem;
+
+    @media(max-width: 600px) {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    @media(max-width: 450px) {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
 
     min-height: 90vh;
     display: flex;
