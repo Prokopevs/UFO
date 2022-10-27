@@ -9,20 +9,16 @@
 Новостной сайт с космической тематикой, где можно почитать интересные статьи о космосе, галактиках, планетах, космических аппаратах и многом другом.
 
 ---
-
-### About the project
-
-#### Stack:
+### Стек:
 - ReactJS
 - TypeScript
 - SCSS
 - Redux
-- Redux Thunk
-- Redux Toolkit
-- Redux Persist
 - mockAPI
-
+- React Router v6
 ---
+### Темная и светлая тема:
 
-<p align="center"> <img  src="src/assets/img/Laniakea2.png"></p>
+На сайте есть возможность выбирать стетлую или тёмную тему.
+<p align="center"> <img  src="src/assets/img/pic2.png"></p>
 
