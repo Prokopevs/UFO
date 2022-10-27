@@ -26,5 +26,5 @@
 
 В любой момент бургер меню можно убрать или наоборот добавить
 
-<p align="center"> <img  src="src/assets/img/burger1.png"></p>
-<p align="center"> <img  src="src/assets/img/burger2.png"></p>
+<p align="center"> <img  src="src/assets/img/burge1.png"></p>
+<p align="center"> <img  src="src/assets/img/burge2.png"></p>
