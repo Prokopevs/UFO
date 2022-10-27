@@ -22,9 +22,18 @@
 Есть возможность выбирать стетлую или тёмную тему.
 <p align="center"> <img  src="src/assets/img/pic2.png"></p>
 
+---
 ### Бургер меню:
 
 В любой момент бургер меню можно убрать или наоборот добавить
 
 <p align="center"> <img  src="src/assets/img/burge1.png"></p>
 <p align="center"> <img  src="src/assets/img/burge2.png"></p>
+
+---
+### Пагинация:
+
+Также реализована пагинация
+
+<p align="center"> <img  src="src/assets/img/pagination.png"></p>
+
