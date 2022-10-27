@@ -1,14 +1,6 @@
 import React from "react"
 import Categories from "./Categories"
-import {
-    All,
-    logoPopular,
-    IconGalaxy,
-    Ufo,
-    Space,
-    Planets,
-    Missions,
-} from "../../pictures"
+import { All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions } from "../../pictures"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { filterSlice } from "../../store/reducers/FilterSlice"
 import { Link } from "react-router-dom"
@@ -32,7 +24,7 @@ const categoryNames = [
     { name: "Миссии", icon: Missions },
 ]
 
-const Sidebar = ({ burger }) => {
+const Sidebar = ({ burger, setBurger, isMobile }) => {
     const dispatch = useAppDispatch()
     const { setCategory } = filterSlice.actions
     const { category } = useAppSelector((state) => state.filterReducer)
@@ -56,6 +48,9 @@ const Sidebar = ({ burger }) => {
         dispatch(setCurrentPage(1)) // выбирая категорию пагинация начинается с 1
         dispatch(setPortionNumber(1)) // Установить номер порции пагинации в 1
         dispatch(setCategory(index)) //выбираем категорию(все, популярное...)
+        if (isMobile) {
+            setBurger(false)
+        }
     }
 
     return (

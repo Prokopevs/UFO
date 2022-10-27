@@ -82,7 +82,7 @@ const Article: React.FC = () => {
                 </ul>
             </div>
 
-            <Comments />
+            {/* <Comments /> */}
         </article>
     )
 }

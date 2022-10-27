@@ -1,28 +1,39 @@
 # <center>LANIAKEA</center>
 
-<p align="center"> <img  src="src/assets/img/Laniakea.png"></p>
+<p align="center"> <img  src="src/assets/img/pic.png"></p>
 
 ---
 
-### Description
+### Описание
 
-На данный момент сайт находится в разработке.
+Новостной сайт с космической тематикой, где можно почитать интересные статьи о космосе, галактиках, планетах, космических аппаратах и многом другом.
 
 ---
-
-### About the project
-
-#### Stack:
+### Стек:
 - ReactJS
 - TypeScript
 - SCSS
 - Redux
-- Redux Thunk
-- Redux Toolkit
-- Redux Persist
 - mockAPI
+- React Router v6
+---
+### Темная и светлая тема:
+
+Есть возможность выбирать стетлую или тёмную тему.
+<p align="center"> <img  src="src/assets/img/pic2.png"></p>
 
 ---
+### Бургер меню:
 
-<p align="center"> <img  src="src/assets/img/Laniakea2.png"></p>
+В любой момент бургер меню можно убрать или наоборот добавить
+
+<p align="center"> <img  src="src/assets/img/burge1.png"></p>
+<p align="center"> <img  src="src/assets/img/burge2.png"></p>
+
+---
+### Пагинация:
+
+Также реализована пагинация
+
+<p align="center"> <img  src="src/assets/img/pagination.png"></p>
 
