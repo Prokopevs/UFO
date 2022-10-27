@@ -40,7 +40,7 @@ const App = () => {
                         <div className="container">
                             <Routes>
                                 <Route path="/ufo" element={<Home />} />
-                                <Route path="/ufo/article" element={<Article />} />
+                                <Route path="/ufo/article/:id" element={<Article />} />
                             </Routes>
                         </div>
                 </main>

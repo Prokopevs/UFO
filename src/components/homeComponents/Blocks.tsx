@@ -1,9 +1,9 @@
-import React, { useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useAppDispatch } from "../../hooks/redux"
+import React from "react"
+import { Link, useNavigate } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { IArticle } from "../../models/IArticle"
 import { IconTwitter } from "../../pictures"
-import { fetchArticle } from "../../store/reducers/ArticleSlice"
+import { ArticleSlice, fetchArticle } from "../../store/reducers/ArticleSlice"
 
 const Blocks: React.FC<IArticle> = ({
     id,
@@ -15,8 +15,14 @@ const Blocks: React.FC<IArticle> = ({
     isLoading,
 }) => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
+    const { setArticleClick, setSelectedArticleId } = ArticleSlice.actions
+    const { articleIsLoading, articleClick, selectedArticleId } = useAppSelector(
+        (state) => state.ArticleReducer
+    )
 
     const onClickArticle = (id: number) => {
+        dispatch(setSelectedArticleId(id))
         dispatch(fetchArticle(id))
     }
 
@@ -24,13 +30,18 @@ const Blocks: React.FC<IArticle> = ({
         window.scrollTo(0, 0)
     }, [])
 
+    React.useEffect(() => {
+        if (articleClick) {
+            navigate(`/ufo/article/${selectedArticleId ? selectedArticleId : ""}`)
+            dispatch(setArticleClick(false))
+        }
+    }, [articleClick])
+
     return (
-        <article className={isLoading ? "post post--opacity" : "post"}>
-            <Link
-                to="/ufo/article"
-                className="post__link"
-                onClick={() => onClickArticle(id)}
-            >
+        <article
+            className={isLoading || articleIsLoading ? "post post--opacity" : "post"}
+        >
+            <div className="post__link" onClick={() => onClickArticle(id)}>
                 <div className="post__header">
                     <img
                         className="post__preview"
@@ -45,7 +56,7 @@ const Blocks: React.FC<IArticle> = ({
                     </h2>
                     <p className="post__description">{description}</p>
                 </div>
-            </Link>
+            </div>
 
             <div className="post__footer">
                 <ul className="post__data">

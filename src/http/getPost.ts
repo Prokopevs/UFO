@@ -5,7 +5,6 @@ import { ITotalCategories } from "../models/ITotalCategories"
 export const getPost = async (category: number | null, pageNumber, limit) => {
     const categories = category !== null ? `category=${category}` : ""
     const pagination = `page=${pageNumber}&limit=${limit}`
-    console.log("category=" +category + " pageNumber=" + pageNumber + " limit=" + limit)
     const response = await axios.get<IArticle[]>(
         `https://62811cdf7532b4920f77b2db.mockapi.io/posts/?${categories}&${pagination}`
     );

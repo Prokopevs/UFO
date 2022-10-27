@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux"
 import { Galaxy } from "../pictures"
 import { filterSlice } from "../store/reducers/FilterSlice"
 import { fetchInteresting } from "../store/reducers/InterestingSlice"
-import { fetchPosts, postSlice } from "../store/reducers/PostSlice"
+import { postSlice } from "../store/reducers/PostSlice"
 import Progress from "./ProgressBar/Progress"
 import Burger from "./sidebarComponents/Burger"
 
@@ -14,6 +14,7 @@ const Header = ({ changeTheme, dark, setBurger, burger }) => {
     const { setCurrentPage, setPortionNumber, setFlag } = postSlice.actions
     const { isLoading, key } = useAppSelector((state) => state.postReducer)
     const { category } = useAppSelector((state) => state.filterReducer)
+    const { articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
 
     React.useEffect(() => {
         document.title = "LANIAKEA"
@@ -76,6 +77,13 @@ const Header = ({ changeTheme, dark, setBurger, burger }) => {
                     </div>
                 </div>
             </div>
+            <Progress
+                isAnimating={articleIsLoading}
+                animationDuration={300}
+                incrementDuration={50}
+                key={key + "1"}
+            />
+
             <Progress
                 isAnimating={isLoading}
                 animationDuration={300}

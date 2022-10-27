@@ -3,16 +3,19 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux"
 import { Link } from "react-router-dom"
 import Comments from "../components/articleComponents/Comments"
 import Recommend from "../components/articleComponents/Recommend"
+import { useParams } from "react-router-dom"
+import { ArticleSlice, fetchArticle } from "../store/reducers/ArticleSlice"
 
 const Article: React.FC = () => {
     const { interesting } = useAppSelector((state) => state.interestingReducer)
     const { article, articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
-    
-    console.log(interesting)
+    const dispatch = useAppDispatch()
+    const { id } = useParams()
 
     function getMeRandomElements(interesting) {
         if (!!interesting.length) {
             const shufled = interesting
+                .filter((el) => el.id !== Number(id))
                 .map((i) => [Math.random(), i])
                 .sort()
                 .map((i) => i[1])
@@ -20,8 +23,20 @@ const Article: React.FC = () => {
         }
     }
 
-    const selected = React.useMemo(() => getMeRandomElements(interesting), [article])
-    // сделать фильтрацию interesting и убирать от туда статью на которой мы сейчас находимся
+    const selected = React.useMemo(
+        () => getMeRandomElements(interesting),
+        [article, interesting]
+    )
+
+    React.useEffect(() => {
+        if (!article.name && id) {
+            dispatch(fetchArticle(Number(id)))
+        }
+    }, [])
+
+    if (articleIsLoading || !selected) {
+        return <div></div>
+    }
 
     return (
         <article className="post">
@@ -51,9 +66,10 @@ const Article: React.FC = () => {
 
                     <p>{article.description}</p>
 
-                    {article.text && article.text.split(" | ").map((item, index) => (
-                        <p key={index}>{item}</p>
-                    ))}
+                    {article.text &&
+                        article.text
+                            .split(" | ")
+                            .map((item, index) => <p key={index}>{item}</p>)}
                 </div>
             </div>
 

@@ -77,12 +77,11 @@ const Home = () => {
         }
         isMounted.current = true
     }, [category, currentPage, flag])
-
     return (
         <>
             <div className="post__none" id="top"></div>
             {posts.map((obj, index) => (
-                <Blocks key={index} isLoading={isLoading} {...obj} />
+                <Blocks key={obj.name + obj.id} isLoading={isLoading} {...obj} />
             ))}
 
             <Pagination category={category} />
