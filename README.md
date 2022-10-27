@@ -19,6 +19,12 @@
 ---
 ### Темная и светлая тема:
 
-На сайте есть возможность выбирать стетлую или тёмную тему.
+Есть возможность выбирать стетлую или тёмную тему.
 <p align="center"> <img  src="src/assets/img/pic2.png"></p>
 
+### Бургер меню:
+
+В любой момент бургер меню можно убрать или наоборот добавить
+
+<p align="center"> <img  src="src/assets/img/burger1.png"></p>
+<p align="center"> <img  src="src/assets/img/burger2.png"></p>
