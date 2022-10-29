@@ -11,20 +11,26 @@ import { filterSlice } from "../store/reducers/FilterSlice"
 const Home = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const { posts, isLoading, currentPage, limit, flag } = useAppSelector(
+    const { posts, isLoading, currentPage, limit, flag, successFetch } = useAppSelector(
         (state) => state.postReducer
     )
+    const { article } = useAppSelector((state) => state.ArticleReducer)
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false)
     const { category } = useAppSelector((state) => state.filterReducer)
-    const { setUrlPage, setUrl } = postSlice.actions
+    const { setUrlPage } = postSlice.actions
     const { setUrlCategory } = filterSlice.actions
+
     const getPost = () => {
-        dispatch(fetchPosts(category, currentPage))
+        dispatch(fetchPosts(category, currentPage, limit))
     }
 
     // Парсим параметры при первом рендере и отправляем их в redux
     React.useEffect(() => {
+        if (article.id) {
+            isMounted.current = true
+        }
+
         if (window.location.search) {
             const params = qs.parse(
                 window.location.search.substring(1)
@@ -51,7 +57,7 @@ const Home = () => {
             getPost()
         }
         isSearch.current = false
-    }, [category, currentPage, flag])
+    }, [category, currentPage, flag]) // flag - чтобы сделать запрос если мы вибираем одну и туже кат. или страницу
 
     // Установить новый url при изменении категорий и страниц
     React.useEffect(() => {
@@ -64,19 +70,18 @@ const Home = () => {
                     page,
                     limit,
                 })
-                dispatch(setUrl(queryString))
             } else {
                 queryString = qs.stringify({
                     category,
                     page,
                     limit,
                 })
-                dispatch(setUrl(queryString))
             }
             navigate(`?${queryString}`)
         }
         isMounted.current = true
     }, [category, currentPage, flag])
+
     return (
         <>
             <div className="post__none" id="top"></div>
@@ -84,7 +89,7 @@ const Home = () => {
                 <Blocks key={`${obj.name}_${index}`} isLoading={isLoading} {...obj} />
             ))}
 
-            <Pagination category={category} />
+            {successFetch && <Pagination category={category} />}
         </>
     )
 }

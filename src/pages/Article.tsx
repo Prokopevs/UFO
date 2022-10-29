@@ -8,8 +8,9 @@ import { ArticleSlice, fetchArticle } from "../store/reducers/ArticleSlice"
 
 const Article: React.FC = () => {
     const { interesting } = useAppSelector((state) => state.interestingReducer)
-    const { article, articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
-    const { url } = useAppSelector((state) => state.postReducer)
+    const { article, articleIsLoading, queryFromRecommend } = useAppSelector(
+        (state) => state.ArticleReducer
+    )
     const dispatch = useAppDispatch()
     const { id } = useParams()
 
@@ -24,11 +25,10 @@ const Article: React.FC = () => {
         }
     }
 
-    const selected = React.useMemo(
+    const currentInterestingArr = React.useMemo(
         () => getMeRandomElements(interesting),
-        [article, interesting]
+        [article, interesting, id]
     )
-    console.log(selected)
 
     React.useEffect(() => {
         if (!article.name && id) {
@@ -36,14 +36,16 @@ const Article: React.FC = () => {
         }
     }, [])
 
-    if (articleIsLoading || !selected) {
-        return <div></div>
+    if (!queryFromRecommend) {
+        if (articleIsLoading || !currentInterestingArr) {
+            return <div></div>
+        }
     }
 
     return (
         <article className={articleIsLoading ? "post post--opacity" : "post"}>
             <div className="post__actions">
-                <Link to={`/ufo?${url ? url : ""}`}>
+                <Link to="/ufo">
                     <div className="post__back">вернуться назад</div>
                 </Link>
             </div>
@@ -78,8 +80,8 @@ const Article: React.FC = () => {
             <div className="recommend">
                 <h3 className="recommend__subtitle">Интересно почитать</h3>
                 <ul className="recommend__list">
-                    {selected &&
-                        selected.map((items, index) => (
+                    {currentInterestingArr &&
+                        currentInterestingArr.map((items, index) => (
                             <Recommend key={`${items.name}_${index}`} {...items} />
                         ))}
                 </ul>

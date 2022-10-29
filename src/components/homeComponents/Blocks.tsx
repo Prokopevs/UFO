@@ -27,7 +27,7 @@ const Blocks: React.FC<IArticle> = ({
             dispatch(fetchArticle(Number(id), true))
         }
     }
-    
+
     React.useEffect(() => {
         window.scrollTo(0, 0)
     }, [])

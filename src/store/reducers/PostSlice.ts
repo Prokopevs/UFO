@@ -15,7 +15,7 @@ interface PostState {
     key: number
     totalCategories: ITotalCategories[]
     flag: boolean
-    url: string
+    successFetch: boolean
 }
 
 const initialState: PostState = {
@@ -28,7 +28,7 @@ const initialState: PostState = {
     key: 0,
     totalCategories: [],
     flag: false,
-    url: "",
+    successFetch: false
 }
 
 export const postSlice = createSlice({
@@ -43,6 +43,7 @@ export const postSlice = createSlice({
             state.isLoading = false
             state.error = ''
             state.posts = action.payload
+            state.successFetch = true
         },
         postsFetchingError(state, action: PayloadAction<string>) {
             state.isLoading = false
@@ -70,13 +71,13 @@ export const postSlice = createSlice({
         setFlag(state) {
             state.flag = !state.flag
         },
-        setUrl(state, action: PayloadAction<string>) {
-            state.url = action.payload
-        },
+        // setSuccessFetch(state, action: PayloadAction<boolean>) {
+        //     state.successFetch = action.payload
+        // }
     }
 })
 
-export const fetchPosts = (category: number | null, pageNumber=1, limit=3) => async (dispatch: AppDispatch) => {
+export const fetchPosts = (category: number | null, pageNumber=1, limit=3, ) => async (dispatch: AppDispatch) => {
     try {
         dispatch(postSlice.actions.postsFetching())
         const response = await getPost(category, pageNumber, limit)

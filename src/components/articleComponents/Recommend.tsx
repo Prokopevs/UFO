@@ -7,14 +7,16 @@ import { ArticleSlice, fetchArticle } from "../../store/reducers/ArticleSlice"
 const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const { setArticleClick, setSelectedArticleId } = ArticleSlice.actions
+    const { setArticleClick, setSelectedArticleId, setQueryFromRecommend } =
+        ArticleSlice.actions
     const { isLoading } = useAppSelector((state) => state.postReducer)
     const { articleClick, selectedArticleId, articleIsLoading } = useAppSelector(
         (state) => state.ArticleReducer
     )
-    
+
     const onClickArticle = (id: string) => {
         if (!articleIsLoading && !isLoading) {
+            dispatch(setQueryFromRecommend(true))
             dispatch(setSelectedArticleId(id))
             dispatch(fetchArticle(Number(id), true))
         }
@@ -23,7 +25,7 @@ const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
     React.useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    
+
     React.useEffect(() => {
         if (articleClick) {
             navigate(`/ufo/article/${selectedArticleId}`)
@@ -34,9 +36,7 @@ const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
     return (
         <li className="recommend__list-item">
             <h4 className="recommend__list-title">
-                <p onClick={() => onClickArticle(id)}>
-                    {name}
-                </p>
+                <p onClick={() => onClickArticle(id)}>{name}</p>
             </h4>
             <time className="recommend__list-date" dateTime="2022-05-21 19:21">
                 {date}

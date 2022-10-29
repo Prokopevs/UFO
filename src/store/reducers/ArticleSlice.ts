@@ -8,13 +8,15 @@ interface ArticleState {
     articleIsLoading: boolean
     articleClick: boolean
     selectedArticleId: null | string
+    queryFromRecommend: boolean
 }
 
 const initialState: ArticleState = {
     article: {} as IArticle,
     articleIsLoading: false,
     articleClick: false,
-    selectedArticleId: null
+    selectedArticleId: null,
+    queryFromRecommend: false,
 }
 
 export const ArticleSlice = createSlice({
@@ -33,6 +35,9 @@ export const ArticleSlice = createSlice({
         setSelectedArticleId(state, action: PayloadAction<string>) {
             state.selectedArticleId = action.payload
         },
+        setQueryFromRecommend(state, action: PayloadAction<boolean>) {
+            state.queryFromRecommend = action.payload
+        },
     }
 })
 
@@ -44,10 +49,12 @@ export const fetchArticle = (id: number, onArticleBlockClick: boolean ) => async
         if (onArticleBlockClick) {
             dispatch(ArticleSlice.actions.setArticleClick(true))
         }
+        
     } catch (e) {
         console.log("error")
     } finally {
         dispatch(ArticleSlice.actions.setArticleLoading(false))
+        dispatch(ArticleSlice.actions.setQueryFromRecommend(false))
     }
 }
 
