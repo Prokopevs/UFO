@@ -1,6 +1,14 @@
 import React from "react"
 import Categories from "./Categories"
-import { All, logoPopular, IconGalaxy, Ufo, Space, Planets, Missions } from "../../pictures"
+import {
+    All,
+    logoPopular,
+    IconGalaxy,
+    Ufo,
+    Space,
+    Planets,
+    Missions,
+} from "../../pictures"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { filterSlice } from "../../store/reducers/FilterSlice"
 import { Link } from "react-router-dom"
@@ -29,6 +37,8 @@ const Sidebar = ({ burger, setBurger, isMobile }) => {
     const { setCategory } = filterSlice.actions
     const { category } = useAppSelector((state) => state.filterReducer)
     const { setCurrentPage, setFlag, setPortionNumber } = postSlice.actions
+    const { articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
+    const { isLoading } = useAppSelector((state) => state.postReducer)
     const shareUrl = "https://"
 
     const scrollTo = () => {
@@ -40,16 +50,18 @@ const Sidebar = ({ burger, setBurger, isMobile }) => {
     }
 
     const onSelectCategory = (index: number | null) => {
-        if (index === category) {
-            // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
-            dispatch(setFlag())
-            scrollTo()
-        }
-        dispatch(setCurrentPage(1)) // выбирая категорию пагинация начинается с 1
-        dispatch(setPortionNumber(1)) // Установить номер порции пагинации в 1
-        dispatch(setCategory(index)) //выбираем категорию(все, популярное...)
-        if (isMobile) {
-            setBurger(false)
+        if (!articleIsLoading && !isLoading) {
+            if (index === category) {
+                // если выбрали ту же категорию на которой находимся, всё равно делать запрос на сервер
+                dispatch(setFlag())
+                scrollTo()
+            }
+            dispatch(setCurrentPage(1)) // выбирая категорию пагинация начинается с 1
+            dispatch(setPortionNumber(1)) // Установить номер порции пагинации в 1
+            dispatch(setCategory(index)) //выбираем категорию(все, популярное...)
+            if (isMobile) {
+                setBurger(false)
+            }
         }
     }
 

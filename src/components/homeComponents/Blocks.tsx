@@ -1,5 +1,5 @@
 import React from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { IArticle } from "../../models/IArticle"
 import { IconTwitter } from "../../pictures"
@@ -21,18 +21,20 @@ const Blocks: React.FC<IArticle> = ({
         (state) => state.ArticleReducer
     )
 
-    const onClickArticle = (id: number) => {
-        dispatch(setSelectedArticleId(id))
-        dispatch(fetchArticle(id))
+    const onClickArticle = (id: string) => {
+        if (!articleIsLoading && !isLoading) {
+            dispatch(setSelectedArticleId(id))
+            dispatch(fetchArticle(Number(id), true))
+        }
     }
-
+    
     React.useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
     React.useEffect(() => {
         if (articleClick) {
-            navigate(`/ufo/article/${selectedArticleId ? selectedArticleId : ""}`)
+            navigate(`/ufo/article/${selectedArticleId}`)
             dispatch(setArticleClick(false))
         }
     }, [articleClick])

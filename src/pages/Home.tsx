@@ -17,9 +17,8 @@ const Home = () => {
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false)
     const { category } = useAppSelector((state) => state.filterReducer)
-    const { setUrlPage } = postSlice.actions
+    const { setUrlPage, setUrl } = postSlice.actions
     const { setUrlCategory } = filterSlice.actions
-
     const getPost = () => {
         dispatch(fetchPosts(category, currentPage))
     }
@@ -30,7 +29,6 @@ const Home = () => {
             const params = qs.parse(
                 window.location.search.substring(1)
             ) as unknown as UrlParams
-
             if (params.category) {
                 dispatch(
                     setUrlCategory({
@@ -66,12 +64,14 @@ const Home = () => {
                     page,
                     limit,
                 })
+                dispatch(setUrl(queryString))
             } else {
                 queryString = qs.stringify({
                     category,
                     page,
                     limit,
                 })
+                dispatch(setUrl(queryString))
             }
             navigate(`?${queryString}`)
         }
@@ -81,7 +81,7 @@ const Home = () => {
         <>
             <div className="post__none" id="top"></div>
             {posts.map((obj, index) => (
-                <Blocks key={obj.name + obj.id} isLoading={isLoading} {...obj} />
+                <Blocks key={`${obj.name}_${index}`} isLoading={isLoading} {...obj} />
             ))}
 
             <Pagination category={category} />

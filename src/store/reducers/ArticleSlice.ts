@@ -7,7 +7,7 @@ interface ArticleState {
     article: IArticle
     articleIsLoading: boolean
     articleClick: boolean
-    selectedArticleId: null | number
+    selectedArticleId: null | string
 }
 
 const initialState: ArticleState = {
@@ -30,18 +30,20 @@ export const ArticleSlice = createSlice({
         setArticleClick(state, action: PayloadAction<boolean>) {
             state.articleClick = action.payload
         },
-        setSelectedArticleId(state, action: PayloadAction<number>) {
+        setSelectedArticleId(state, action: PayloadAction<string>) {
             state.selectedArticleId = action.payload
         },
     }
 })
 
-export const fetchArticle = (id: number ) => async (dispatch: AppDispatch) => {
+export const fetchArticle = (id: number, onArticleBlockClick: boolean ) => async (dispatch: AppDispatch) => {
     try {
         dispatch(ArticleSlice.actions.setArticleLoading(true))
         const response = await getArticle(id)
         dispatch(ArticleSlice.actions.setArticle(response.data))
-        dispatch(ArticleSlice.actions.setArticleClick(true))
+        if (onArticleBlockClick) {
+            dispatch(ArticleSlice.actions.setArticleClick(true))
+        }
     } catch (e) {
         console.log("error")
     } finally {

@@ -15,6 +15,7 @@ interface PostState {
     key: number
     totalCategories: ITotalCategories[]
     flag: boolean
+    url: string
 }
 
 const initialState: PostState = {
@@ -27,6 +28,7 @@ const initialState: PostState = {
     key: 0,
     totalCategories: [],
     flag: false,
+    url: "",
 }
 
 export const postSlice = createSlice({
@@ -67,6 +69,9 @@ export const postSlice = createSlice({
         },
         setFlag(state) {
             state.flag = !state.flag
+        },
+        setUrl(state, action: PayloadAction<string>) {
+            state.url = action.payload
         },
     }
 })

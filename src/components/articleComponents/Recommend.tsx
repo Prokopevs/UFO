@@ -1,18 +1,35 @@
 import React from "react"
-import { useAppDispatch } from "../../hooks/redux"
+import { useNavigate } from "react-router-dom"
+import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { IInteresting } from "../../models/IInteresting"
-import { fetchArticle } from "../../store/reducers/ArticleSlice"
+import { ArticleSlice, fetchArticle } from "../../store/reducers/ArticleSlice"
 
 const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
     const dispatch = useAppDispatch()
-
-    const onClickArticle = (id: number) => {
-        dispatch(fetchArticle(id))
+    const navigate = useNavigate()
+    const { setArticleClick, setSelectedArticleId } = ArticleSlice.actions
+    const { isLoading } = useAppSelector((state) => state.postReducer)
+    const { articleClick, selectedArticleId, articleIsLoading } = useAppSelector(
+        (state) => state.ArticleReducer
+    )
+    
+    const onClickArticle = (id: string) => {
+        if (!articleIsLoading && !isLoading) {
+            dispatch(setSelectedArticleId(id))
+            dispatch(fetchArticle(Number(id), true))
+        }
     }
 
     React.useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+    
+    React.useEffect(() => {
+        if (articleClick) {
+            navigate(`/ufo/article/${selectedArticleId}`)
+            dispatch(setArticleClick(false))
+        }
+    }, [articleClick])
 
     return (
         <li className="recommend__list-item">

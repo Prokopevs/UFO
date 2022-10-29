@@ -9,13 +9,14 @@ import { ArticleSlice, fetchArticle } from "../store/reducers/ArticleSlice"
 const Article: React.FC = () => {
     const { interesting } = useAppSelector((state) => state.interestingReducer)
     const { article, articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
+    const { url } = useAppSelector((state) => state.postReducer)
     const dispatch = useAppDispatch()
     const { id } = useParams()
 
     function getMeRandomElements(interesting) {
         if (!!interesting.length) {
             const shufled = interesting
-                .filter((el) => el.id !== Number(id))
+                .filter((el) => el.id !== id)
                 .map((i) => [Math.random(), i])
                 .sort()
                 .map((i) => i[1])
@@ -27,10 +28,11 @@ const Article: React.FC = () => {
         () => getMeRandomElements(interesting),
         [article, interesting]
     )
+    console.log(selected)
 
     React.useEffect(() => {
         if (!article.name && id) {
-            dispatch(fetchArticle(Number(id)))
+            dispatch(fetchArticle(Number(id), false))
         }
     }, [])
 
@@ -39,10 +41,10 @@ const Article: React.FC = () => {
     }
 
     return (
-        <article className="post">
+        <article className={articleIsLoading ? "post post--opacity" : "post"}>
             <div className="post__actions">
-                <Link to="/ufo">
-                    <p>вернуться назад</p>
+                <Link to={`/ufo?${url ? url : ""}`}>
+                    <div className="post__back">вернуться назад</div>
                 </Link>
             </div>
 
@@ -76,9 +78,10 @@ const Article: React.FC = () => {
             <div className="recommend">
                 <h3 className="recommend__subtitle">Интересно почитать</h3>
                 <ul className="recommend__list">
-                    {selected.map((items, index) => (
-                        <Recommend key={index} {...items} />
-                    ))}
+                    {selected &&
+                        selected.map((items, index) => (
+                            <Recommend key={`${items.name}_${index}`} {...items} />
+                        ))}
                 </ul>
             </div>
 
