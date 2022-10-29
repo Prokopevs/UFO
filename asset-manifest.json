@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ufo/static/css/main.ce88150e.css",
-    "main.js": "/ufo/static/js/main.247b3289.js",
+    "main.css": "/ufo/static/css/main.ceafd6ad.css",
+    "main.js": "/ufo/static/js/main.863c8baa.js",
     "static/media/planets.png": "/ufo/static/media/planets.2173c8acaa09d6e3c973.png",
     "static/media/space.png": "/ufo/static/media/space.c6d08846d3571f83c5e4.png",
     "static/media/missions-1.png": "/ufo/static/media/missions-1.d937f94eff3dd0a7827d.png",
@@ -15,11 +15,11 @@
     "static/media/twitter.png": "/ufo/static/media/twitter.28b4dce41e4e33858919.png",
     "static/media/facebook.png": "/ufo/static/media/facebook.4f037d961598aff2a0a4.png",
     "index.html": "/ufo/index.html",
-    "main.ce88150e.css.map": "/ufo/static/css/main.ce88150e.css.map",
-    "main.247b3289.js.map": "/ufo/static/js/main.247b3289.js.map"
+    "main.ceafd6ad.css.map": "/ufo/static/css/main.ceafd6ad.css.map",
+    "main.863c8baa.js.map": "/ufo/static/js/main.863c8baa.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce88150e.css",
-    "static/js/main.247b3289.js"
+    "static/css/main.ceafd6ad.css",
+    "static/js/main.863c8baa.js"
   ]
 }
