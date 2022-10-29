@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 
 interface IContainer {
-    animationDuration: number,
-    children: any,
+    animationDuration: number
+    children: any
     isFinished: boolean
 }
 
@@ -10,7 +10,7 @@ const Container: React.FC<IContainer> = ({ animationDuration, children, isFinish
     <div
         style={{
             opacity: isFinished ? 0 : 1,
-            pointerEvents: 'none',
+            pointerEvents: "none",
             transition: `opacity ${animationDuration}ms linear`,
         }}
     >

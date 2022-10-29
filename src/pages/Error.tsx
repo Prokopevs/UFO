@@ -5,7 +5,9 @@ const Error = () => {
     return (
         <div className="error">
             <p className="error__text">Что-то пошло не так</p>
-            <p className="error__text">Вернуться на <Link to="/ufo">главную</Link></p>
+            <p className="error__text">
+                Вернуться на <Link to="/ufo">главную</Link>
+            </p>
         </div>
     )
 }

@@ -42,7 +42,7 @@ const Article = () => {
             return <div></div>
         }
     }
-    
+
     ErrorRedirect(error)
 
     return (
@@ -92,9 +92,7 @@ const Article = () => {
 
             {/* <Comments /> */}
         </article>
-    
     )
-    
 }
 
 export default Article
