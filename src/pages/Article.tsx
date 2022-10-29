@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import Comments from "../components/articleComponents/Comments"
 import Recommend from "../components/articleComponents/Recommend"
 import { useParams } from "react-router-dom"
-import { ArticleSlice, fetchArticle } from "../store/reducers/ArticleSlice"
+import { fetchArticle } from "../store/reducers/ArticleSlice"
 import { ErrorRedirect } from "../hooks/ErrorRedirect"
 
 const Article = () => {
