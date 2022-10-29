@@ -24,6 +24,10 @@
 .recommend__list-item {
     width: 50%;
     margin-bottom: 2.5rem;
+
+    @media(max-width: 520px) {
+        width: 100%;
+    }
 }
 
 .recommend__list-title {
