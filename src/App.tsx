@@ -7,6 +7,7 @@ import useLocalStorage from "use-local-storage"
 import { useMediaQuery } from "react-responsive"
 
 import { Routes, Route } from "react-router-dom"
+import Error from "./pages/Error"
 
 const App = () => {
     const [dark, setDark] = useLocalStorage("dark", true)
@@ -41,6 +42,7 @@ const App = () => {
                         <Routes>
                             <Route path="/ufo" element={<Home />} />
                             <Route path="/ufo/article/:id" element={<Article />} />
+                            <Route path="/ufo/error" element={<Error />} />
                         </Routes>
                     </div>
                 </main>

@@ -8,13 +8,15 @@ interface ArticleState {
     articleIsLoading: boolean
     articleClick: boolean
     selectedArticleId: null | string
+    error: boolean
 }
 
 const initialState: ArticleState = {
     article: {} as IArticle,
     articleIsLoading: false,
     articleClick: false,
-    selectedArticleId: null
+    selectedArticleId: null,
+    error: false,
 }
 
 export const ArticleSlice = createSlice({
@@ -33,6 +35,9 @@ export const ArticleSlice = createSlice({
         setSelectedArticleId(state, action: PayloadAction<string>) {
             state.selectedArticleId = action.payload
         },
+        setError(state, action: PayloadAction<boolean>) {
+            state.error = action.payload
+        },
     }
 })
 
@@ -45,7 +50,7 @@ export const fetchArticle = (id: number, onArticleBlockClick: boolean ) => async
             dispatch(ArticleSlice.actions.setArticleClick(true))
         }
     } catch (e) {
-        console.log("error")
+        dispatch(ArticleSlice.actions.setError(true))
     } finally {
         dispatch(ArticleSlice.actions.setArticleLoading(false))
     }

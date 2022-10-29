@@ -5,10 +5,11 @@ import Comments from "../components/articleComponents/Comments"
 import Recommend from "../components/articleComponents/Recommend"
 import { useParams } from "react-router-dom"
 import { ArticleSlice, fetchArticle } from "../store/reducers/ArticleSlice"
+import { ErrorRedirect } from "../hooks/ErrorRedirect"
 
 const Article: React.FC = () => {
     const { interesting } = useAppSelector((state) => state.interestingReducer)
-    const { article, articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
+    const { article, articleIsLoading, error } = useAppSelector((state) => state.ArticleReducer)
     const { url } = useAppSelector((state) => state.postReducer)
     const dispatch = useAppDispatch()
     const { id } = useParams()
@@ -35,6 +36,8 @@ const Article: React.FC = () => {
             dispatch(fetchArticle(Number(id), false))
         }
     }, [])
+
+    ErrorRedirect(error)
 
     if (articleIsLoading || !selected) {
         return <div></div>

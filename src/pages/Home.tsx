@@ -7,6 +7,7 @@ import qs from "qs"
 import { useNavigate } from "react-router-dom"
 import { UrlParams } from "../models/IPosts"
 import { filterSlice } from "../store/reducers/FilterSlice"
+import { ErrorRedirect } from "../hooks/ErrorRedirect"
 
 const Home = () => {
     const dispatch = useAppDispatch()
@@ -14,6 +15,7 @@ const Home = () => {
     const { posts, isLoading, currentPage, limit, flag } = useAppSelector(
         (state) => state.postReducer
     )
+    const { error } = useAppSelector((state) => state.ArticleReducer)
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false)
     const { category } = useAppSelector((state) => state.filterReducer)
@@ -77,6 +79,8 @@ const Home = () => {
         }
         isMounted.current = true
     }, [category, currentPage, flag])
+
+    ErrorRedirect(error)
     return (
         <>
             <div className="post__none" id="top"></div>
