@@ -5,10 +5,11 @@ import Comments from "../components/articleComponents/Comments"
 import Recommend from "../components/articleComponents/Recommend"
 import { useParams } from "react-router-dom"
 import { ArticleSlice, fetchArticle } from "../store/reducers/ArticleSlice"
+import { ErrorRedirect } from "../hooks/ErrorRedirect"
 
-const Article: React.FC = () => {
+const Article = () => {
     const { interesting } = useAppSelector((state) => state.interestingReducer)
-    const { article, articleIsLoading, queryFromRecommend } = useAppSelector(
+    const { article, articleIsLoading, queryFromRecommend, error } = useAppSelector(
         (state) => state.ArticleReducer
     )
     const dispatch = useAppDispatch()
@@ -41,6 +42,8 @@ const Article: React.FC = () => {
             return <div></div>
         }
     }
+    
+    ErrorRedirect(error)
 
     return (
         <article className={articleIsLoading ? "post post--opacity" : "post"}>
@@ -89,7 +92,9 @@ const Article: React.FC = () => {
 
             {/* <Comments /> */}
         </article>
+    
     )
+    
 }
 
 export default Article

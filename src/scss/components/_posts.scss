@@ -43,6 +43,7 @@
         height: auto;
         min-height: 40rem;
         object-fit: cover;
+        cursor: pointer;
     }
 
     &__inside {
@@ -52,6 +53,7 @@
 
     &__content {
         margin: 3rem 0;
+        cursor: pointer;
     }
 
     &__title {

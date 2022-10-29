@@ -4,6 +4,7 @@ import { IArticle } from "../../models/IArticle"
 import { UrlParams } from "../../models/IPosts"
 import { ITotalCategories } from "../../models/ITotalCategories"
 import { AppDispatch } from "../store"
+import { ArticleSlice } from "./ArticleSlice"
 
 interface PostState {
     posts: IArticle[]
@@ -84,6 +85,7 @@ export const fetchPosts = (category: number | null, pageNumber=1, limit=3, ) => 
         dispatch(postSlice.actions.postsFetchingSuccess(response.data))
     } catch (e) {
         dispatch(postSlice.actions.postsFetchingError(e.message))
+        dispatch(ArticleSlice.actions.setError(true))
     }
 }
 

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { IArticle } from "../../models/IArticle"
 import { IconTwitter } from "../../pictures"
 import { ArticleSlice, fetchArticle } from "../../store/reducers/ArticleSlice"
+import { ErrorRedirect } from "../../hooks/ErrorRedirect"
 
 const Blocks: React.FC<IArticle> = ({
     id,
@@ -17,7 +18,7 @@ const Blocks: React.FC<IArticle> = ({
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { setArticleClick, setSelectedArticleId } = ArticleSlice.actions
-    const { articleIsLoading, articleClick, selectedArticleId } = useAppSelector(
+    const { articleIsLoading, articleClick, selectedArticleId, error } = useAppSelector(
         (state) => state.ArticleReducer
     )
 
