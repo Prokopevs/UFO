@@ -5,6 +5,7 @@ import { IArticle } from "../../models/IArticle"
 import { IconTwitter } from "../../pictures"
 import { ArticleSlice, fetchArticle } from "../../store/reducers/ArticleSlice"
 import { ErrorRedirect } from "../../hooks/ErrorRedirect"
+import { postSlice } from "../../store/reducers/PostSlice"
 
 const Blocks: React.FC<IArticle> = ({
     id,
@@ -18,6 +19,7 @@ const Blocks: React.FC<IArticle> = ({
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { setArticleClick, setSelectedArticleId } = ArticleSlice.actions
+    const { setUrl } = postSlice.actions
     const { articleIsLoading, articleClick, selectedArticleId, error } = useAppSelector(
         (state) => state.ArticleReducer
     )
@@ -36,6 +38,7 @@ const Blocks: React.FC<IArticle> = ({
     React.useEffect(() => {
         if (articleClick) {
             navigate(`/ufo/article/${selectedArticleId}`)
+            dispatch(setUrl(`article/${selectedArticleId}`))
             dispatch(setArticleClick(false))
         }
     }, [articleClick])

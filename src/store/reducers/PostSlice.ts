@@ -17,6 +17,7 @@ interface PostState {
     totalCategories: ITotalCategories[]
     flag: boolean
     successFetch: boolean
+    url: string
 }
 
 const initialState: PostState = {
@@ -29,7 +30,8 @@ const initialState: PostState = {
     key: 0,
     totalCategories: [],
     flag: false,
-    successFetch: false
+    successFetch: false,
+    url: ""
 }
 
 export const postSlice = createSlice({
@@ -72,9 +74,9 @@ export const postSlice = createSlice({
         setFlag(state) {
             state.flag = !state.flag
         },
-        // setSuccessFetch(state, action: PayloadAction<boolean>) {
-        //     state.successFetch = action.payload
-        // }
+        setUrl(state, action: PayloadAction<string>) {
+            state.url = action.payload
+        },
     }
 })
 

@@ -35,11 +35,13 @@ const categoryNames = [
 const Sidebar = ({ burger, setBurger, isMobile }) => {
     const dispatch = useAppDispatch()
     const { setCategory } = filterSlice.actions
-    const { category } = useAppSelector((state) => state.filterReducer)
     const { setCurrentPage, setFlag, setPortionNumber } = postSlice.actions
+
+    const { category } = useAppSelector((state) => state.filterReducer)
     const { articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
-    const { isLoading } = useAppSelector((state) => state.postReducer)
-    const shareUrl = "https://"
+    const { isLoading, url } = useAppSelector((state) => state.postReducer)
+
+    const shareUrl = `https://prokopevs.github.io/ufo/${url}`
 
     const scrollTo = () => {
         scroller.scrollTo("top", {
@@ -67,7 +69,7 @@ const Sidebar = ({ burger, setBurger, isMobile }) => {
 
     return (
         <aside className={burger ? "sidebar active" : "sidebar"}>
-            <Link to="/ufo" className="post__link">
+            <Link to="/ufo/" className="post__link">
                 <Categories
                     items={categoryNames}
                     all={All}

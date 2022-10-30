@@ -37,18 +37,18 @@ const Article = () => {
         }
     }, [])
 
+    ErrorRedirect(error)
+
     if (!queryFromRecommend) {
         if (articleIsLoading || !currentInterestingArr) {
             return <div></div>
         }
     }
 
-    ErrorRedirect(error)
-
     return (
         <article className={articleIsLoading ? "post post--opacity" : "post"}>
             <div className="post__actions">
-                <Link to="/ufo">
+                <Link to="/ufo/">
                     <div className="post__back">вернуться назад</div>
                 </Link>
             </div>

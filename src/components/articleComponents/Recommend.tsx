@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks/redux"
 import { IInteresting } from "../../models/IInteresting"
 import { ArticleSlice, fetchArticle } from "../../store/reducers/ArticleSlice"
+import { postSlice } from "../../store/reducers/PostSlice"
 
 const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const { setArticleClick, setSelectedArticleId, setQueryFromRecommend } =
-        ArticleSlice.actions
+    const { setArticleClick, setSelectedArticleId, setQueryFromRecommend } = ArticleSlice.actions
     const { isLoading } = useAppSelector((state) => state.postReducer)
+    const { setUrl } = postSlice.actions
     const { articleClick, selectedArticleId, articleIsLoading } = useAppSelector(
         (state) => state.ArticleReducer
     )
@@ -29,6 +30,7 @@ const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
     React.useEffect(() => {
         if (articleClick) {
             navigate(`/ufo/article/${selectedArticleId}`)
+            dispatch(setUrl(`article/${selectedArticleId}`))
             dispatch(setArticleClick(false))
         }
     }, [articleClick])

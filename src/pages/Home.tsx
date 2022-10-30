@@ -15,12 +15,11 @@ const Home = () => {
     const { posts, isLoading, currentPage, limit, flag, successFetch } = useAppSelector(
         (state) => state.postReducer
     )
-
     const { article, error } = useAppSelector((state) => state.ArticleReducer)
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false)
     const { category } = useAppSelector((state) => state.filterReducer)
-    const { setUrlPage } = postSlice.actions
+    const { setUrlPage, setUrl } = postSlice.actions
     const { setUrlCategory } = filterSlice.actions
 
     const getPost = () => {
@@ -72,12 +71,14 @@ const Home = () => {
                     page,
                     limit,
                 })
+                dispatch(setUrl(`?${queryString}`))
             } else {
                 queryString = qs.stringify({
                     category,
                     page,
                     limit,
                 })
+                dispatch(setUrl(`?${queryString}`))
             }
             navigate(`?${queryString}`)
         }
