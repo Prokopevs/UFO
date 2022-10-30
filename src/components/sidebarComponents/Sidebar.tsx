@@ -41,7 +41,7 @@ const Sidebar = ({ burger, setBurger, isMobile }) => {
     const { articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
     const { isLoading, url } = useAppSelector((state) => state.postReducer)
 
-    const shareUrl = "https://prokopevs.github.io/ufo/"
+    const shareUrl = `https://prokopevs.github.io/ufo/${url}`
 
     const scrollTo = () => {
         scroller.scrollTo("top", {
