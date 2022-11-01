@@ -8,7 +8,8 @@ import { postSlice } from "../../store/reducers/PostSlice"
 const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
-    const { setArticleClick, setSelectedArticleId, setQueryFromRecommend } = ArticleSlice.actions
+    const { setArticleClick, setSelectedArticleId, setQueryFromRecommend } =
+        ArticleSlice.actions
     const { isLoading } = useAppSelector((state) => state.postReducer)
     const { setUrl } = postSlice.actions
     const { articleClick, selectedArticleId, articleIsLoading } = useAppSelector(
