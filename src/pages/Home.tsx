@@ -94,7 +94,7 @@ const Home = () => {
                 <Blocks key={`${obj.name}_${index}`} isLoading={isLoading} {...obj} />
             ))}
 
-            {successFetch && <Pagination category={category} />}
+            {(successFetch && posts.length !== 0) && <Pagination category={category} />}
         </>
     )
 }

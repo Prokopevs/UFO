@@ -84,6 +84,9 @@ export const fetchPosts = (category: number | null, pageNumber=1, limit=3, ) => 
     try {
         dispatch(postSlice.actions.postsFetching())
         const response = await getPost(category, pageNumber, limit)
+        if (response.data === null){
+            response.data = []
+        } 
         dispatch(postSlice.actions.postsFetchingSuccess(response.data))
     } catch (e) {
         dispatch(postSlice.actions.postsFetchingError(e.message))

@@ -7,7 +7,7 @@ export interface IArticle {
     category: number
     categoryName: string
     likeCount: number
-    liked: false
+    liked?: false
     text: string
     isLoading?: boolean
 }

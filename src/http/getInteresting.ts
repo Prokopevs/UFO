@@ -1,7 +1,7 @@
-import axios from "axios";
 import { IInteresting } from "../models/IInteresting";
+import $api from "../http";
 
 export const getInteresting = async () => {
-    const response = await axios.get<IInteresting[]>(`https://62811cdf7532b4920f77b2db.mockapi.io/interesting`)
+    const response = await $api.get<IInteresting[]>(`/getInteresting`)
     return response
 };
