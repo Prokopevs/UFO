@@ -2,7 +2,6 @@
   "name": "react-ufo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://prokopevs.github.io/ufo/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@tanem/react-nprogress": "^5.0.1",
@@ -17,6 +16,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.2",
     "dotenv": "^16.4.5",
+    "env-cmd": "^10.1.0",
     "gh-pages": "^4.0.0",
     "node-sass": "^9.0.0",
     "qs": "^6.11.0",
@@ -38,7 +38,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3004 env-cmd -f .env react-scripts start",
     "build": "env-cmd -f .env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
