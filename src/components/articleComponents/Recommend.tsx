@@ -30,7 +30,7 @@ const Recommend: React.FC<IInteresting> = ({ id, name, date }) => {
 
     React.useEffect(() => {
         if (articleClick) {
-            navigate(`/ufo/article/${selectedArticleId}`)
+            navigate(`/article/${selectedArticleId}`)
             dispatch(setUrl(`article/${selectedArticleId}`))
             dispatch(setArticleClick(false))
         }

@@ -41,7 +41,7 @@ const Sidebar = ({ burger, setBurger, isMobile }) => {
     const { articleIsLoading } = useAppSelector((state) => state.ArticleReducer)
     const { isLoading, url } = useAppSelector((state) => state.postReducer)
 
-    const shareUrl = "https://prokopevs.github.io/ufo/"
+    const shareUrl = "https://laniakea.eridani.site"
 
     const scrollTo = () => {
         scroller.scrollTo("top", {
@@ -69,7 +69,7 @@ const Sidebar = ({ burger, setBurger, isMobile }) => {
 
     return (
         <aside className={burger ? "sidebar active" : "sidebar"}>
-            <Link to="/ufo/" className="post__link">
+            <Link to="/" className="post__link">
                 <Categories
                     items={categoryNames}
                     all={All}

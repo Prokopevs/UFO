@@ -10,7 +10,7 @@ export const ErrorRedirect = (error) => {
 
     React.useEffect(() => {
         if (error) {
-            navigate("/ufo/error")
+            navigate("/error")
             dispatch(setError(false))
         }
     }, [error])

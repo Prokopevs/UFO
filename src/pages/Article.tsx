@@ -48,7 +48,7 @@ const Article = () => {
     return (
         <article className={articleIsLoading ? "post post--opacity" : "post"}>
             <div className="post__actions">
-                <Link to="/ufo/">
+                <Link to="/">
                     <div className="post__back">вернуться назад</div>
                 </Link>
             </div>

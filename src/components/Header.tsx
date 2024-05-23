@@ -39,7 +39,7 @@ const Header = ({ changeTheme, dark, setBurger, burger }) => {
             <div className="header__wrapper">
                 <div className="header__inner">
                     <Link
-                        to="/ufo/"
+                        to="/"
                         className="header__link"
                         onClick={() => onClickCategory()}
                     >

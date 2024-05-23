@@ -40,9 +40,9 @@ const App = () => {
                 <main className={burger ? "main" : "main center"}>
                     <div className="container">
                         <Routes>
-                            <Route path="/ufo" element={<Home />} />
-                            <Route path="/ufo/article/:id" element={<Article />} />
-                            <Route path="/ufo/error" element={<Error />} />
+                            <Route path="/" element={<Home />} />
+                            <Route path="/article/:id" element={<Article />} />
+                            <Route path="/error" element={<Error />} />
                         </Routes>
                     </div>
                 </main>
